@@ -1,0 +1,23 @@
+---
+export interface Props {
+  href: string;
+  label: string;
+  Icon: any;
+  class?: string;
+}
+
+const { href, label, Icon, class: extraClass = "" } = Astro.props;
+---
+
+<a
+  href={href}
+  aria-label={label}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    "bg-blue-50 p-3 rounded-2xl text-blue-900 hover:bg-blue-900 hover:text-white shadow-sm transition-all duration-300",
+    extraClass,
+  ]}
+>
+  <Icon class="w-5 h-5" />
+</a>
