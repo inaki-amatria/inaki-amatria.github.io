@@ -1,0 +1,75 @@
+---
+import Facebook from "@assets/icons/Facebook.svg";
+import Instagram from "@assets/icons/Instagram.svg";
+import Twitter from "@assets/icons/Twitter.svg";
+import YouTube from "@assets/icons/YouTube.svg";
+
+import Link from "@components/ui/Link.astro";
+import SocialLink from "@components/ui/SocialLink.astro";
+
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/reglamento", label: "Reglamento" },
+  { href: "/premios", label: "Premios" },
+  { href: "/partidas", label: "Partidas" },
+  { href: "/alojamiento", label: "Alojamiento" },
+  { href: "/contacto", label: "Contacto" },
+  { href: "/privacidad", label: "Privacidad" },
+  { href: "/cookies", label: "Cookies" },
+];
+
+const socialLinks = {
+  facebook: {
+    href: "https://facebook.com/escola.pontevedra",
+    Icon: Facebook,
+    label: "Facebook",
+  },
+  instagram: {
+    href: "https://www.instagram.com/expontevedra",
+    Icon: Instagram,
+    label: "Instagram",
+  },
+  twitter: {
+    href: "https://x.com/xadrezpontevedr",
+    Icon: Twitter,
+    label: "Twitter / X",
+  },
+  youtube: {
+    href: "https://www.youtube.com/channel/UCddRc4mlget43r8rA8Ac13A",
+    Icon: YouTube,
+    label: "YouTube",
+  },
+};
+---
+
+<footer class="border-t border-gray-200">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 py-12">
+    <div class="flex flex-col gap-4">
+      <h4 class="text-blue-900 font-bold text-sm uppercase tracking-widest">
+        Navegación
+      </h4>
+      <nav class="flex flex-col gap-2">
+        {
+          links.map((link) => (
+            <Link href={link.href} class="text-sm w-fit">
+              {link.label}
+            </Link>
+          ))
+        }
+      </nav>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <h4 class="text-blue-900 font-bold text-sm uppercase tracking-widest">
+        Síguenos
+      </h4>
+      <div class="flex flex-wrap gap-4">
+        {
+          Object.values(socialLinks).map(({ href, label, Icon }) => (
+            <SocialLink href={href} label={label} Icon={Icon} />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>
