@@ -1,0 +1,78 @@
+<section class="mb-12">
+  <div class="flex flex-col gap-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900">
+      Sigue el torneo en directo
+    </h2>
+
+    <select
+      id="round-select"
+      class="bg-white text-gray-600 text-sm rounded-xl px-4 py-2 font-bold shadow-md h-fit w-fit"
+    >
+      <option>Cargando rondas...</option>
+    </select>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="broadcast-grid">
+    </div>
+  </div>
+</section>
+
+<template id="board-template">
+  <div class="board flex flex-col bg-white rounded-3xl shadow-lg gap-4 p-4">
+    <span
+      class="board-number text-xs font-bold uppercase tracking-widest text-blue-900"
+      >Mesa 1</span
+    >
+
+    <div class="flex items-center justify-between gap-4">
+      <h3
+        class="flex-1 min-w-0 truncate text-gray-600 font-bold font-serif italic"
+      >
+        <span class="player-black-title text-blue-900"></span>
+        <span class="player-black-name"></span>
+      </h3>
+
+      <span
+        class="player-black-rating flex-shrink-0 whitespace-nowrap text-blue-900 font-serif font-bold"
+      ></span>
+    </div>
+
+    <div
+      class="relative aspect-square bg-gray-50 rounded-lg overflow-hidden shadow-inner"
+    >
+      <div class="cg-board w-full h-full"></div>
+
+      <div
+        class="board-overlay absolute inset-0 bg-blue-900/20 flex items-center justify-center z-20 opacity-0 transition-opacity duration-500 ease-in-out pointer-events-none"
+      >
+        <span
+          class="board-result text-6xl font-bold font-serif text-white drop-shadow-lg"
+        ></span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between gap-4">
+      <h3
+        class="flex-1 min-w-0 truncate text-gray-600 font-bold font-serif italic"
+      >
+        <span class="player-white-title text-blue-900"></span>
+        <span class="player-white-name"></span>
+      </h3>
+
+      <span
+        class="player-white-rating flex-shrink-0 whitespace-nowrap text-blue-900 font-serif font-bold"
+      ></span>
+    </div>
+
+    <a
+      class="text-xs text-gray-600 hover:text-blue-900 self-end"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Ver en Lichess
+    </a>
+  </div>
+</template>
+
+<script>
+  import "@components/pages/partidas/LiveBoards.ts";
+</script>
