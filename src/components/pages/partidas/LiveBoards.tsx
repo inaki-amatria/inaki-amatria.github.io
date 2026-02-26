@@ -91,19 +91,19 @@ function LiveBoard({
         mode === "skeleton" && "animate-pulse",
       ].join(" ")}
     >
-      <span class="text-xs font-bold uppercase tracking-widest text-blue-900">
+      <span class="text-sm font-bold uppercase tracking-widest text-blue-900">
         Mesa {index + 1}
       </span>
 
       {/* Black */}
       <div class="flex items-center justify-between gap-4">
-        <h3 class="flex-1 truncate text-gray-600 font-bold">
-          <span class="text-blue-900">
+        <h3 class="flex-1 truncate text-gray-600">
+          <span class="text-blue-900 font-bold">
             {mode === "skeleton" ? "" : black?.title}
           </span>{" "}
           {mode === "skeleton" ? "Negro" : black?.name ?? "Negro"}
         </h3>
-        <span class="text-blue-900 font-bold">
+        <span class="text-blue-900">
           {mode === "skeleton" ? "0" : black?.rating ?? 0}
         </span>
       </div>
@@ -131,13 +131,13 @@ function LiveBoard({
 
       {/* White */}
       <div class="flex items-center justify-between gap-4">
-        <h3 class="flex-1 truncate text-gray-600 font-bold">
-          <span class="text-blue-900">
+        <h3 class="flex-1 truncate text-gray-600">
+          <span class="text-blue-900 font-bold">
             {mode === "skeleton" ? "" : white?.title}
           </span>{" "}
           {mode === "skeleton" ? "Blanco" : white?.name ?? "Blanco"}
         </h3>
-        <span class="text-blue-900 font-bold">
+        <span class="text-blue-900">
           {mode === "skeleton" ? "0" : white?.rating ?? 0}
         </span>
       </div>
@@ -210,7 +210,7 @@ export default function LiveBoards() {
         </h2>
 
         <select
-          class="bg-white text-gray-600 text-base rounded-full px-4 py-2 font-bold shadow-md h-fit w-fit"
+          class="bg-white text-gray-600 text-base rounded-full px-4 py-2 shadow-md h-fit w-fit"
           value={currentRound?.id}
           onChange={(e) => {
             const r = rounds.find(r => r.id === e.currentTarget.value);
