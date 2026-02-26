@@ -97,13 +97,13 @@ function LiveBoard({
 
       {/* Black */}
       <div class="flex items-center justify-between gap-4">
-        <h3 class="flex-1 truncate text-gray-600 font-bold font-serif italic">
+        <h3 class="flex-1 truncate text-gray-600 font-bold">
           <span class="text-blue-900">
             {mode === "skeleton" ? "" : black?.title}
           </span>{" "}
           {mode === "skeleton" ? "Negro" : black?.name ?? "Negro"}
         </h3>
-        <span class="text-blue-900 font-serif font-bold">
+        <span class="text-blue-900 font-bold">
           {mode === "skeleton" ? "0" : black?.rating ?? 0}
         </span>
       </div>
@@ -122,7 +122,7 @@ function LiveBoard({
               finished ? "opacity-100" : "opacity-0 pointer-events-none",
             ].join(" ")}
           >
-            <span class="text-6xl font-bold font-serif text-white drop-shadow-lg">
+            <span class="text-6xl font-bold text-white drop-shadow-lg">
               {game.status?.replace("-", " - ")}
             </span>
           </div>
@@ -131,13 +131,13 @@ function LiveBoard({
 
       {/* White */}
       <div class="flex items-center justify-between gap-4">
-        <h3 class="flex-1 truncate text-gray-600 font-bold font-serif italic">
+        <h3 class="flex-1 truncate text-gray-600 font-bold">
           <span class="text-blue-900">
             {mode === "skeleton" ? "" : white?.title}
           </span>{" "}
           {mode === "skeleton" ? "Blanco" : white?.name ?? "Blanco"}
         </h3>
-        <span class="text-blue-900 font-serif font-bold">
+        <span class="text-blue-900 font-bold">
           {mode === "skeleton" ? "0" : white?.rating ?? 0}
         </span>
       </div>
