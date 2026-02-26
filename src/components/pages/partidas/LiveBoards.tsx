@@ -145,6 +145,8 @@ function LiveBoard({
       <a
         class="text-xs text-gray-600 hover:text-blue-900 self-end"
         href={mode === "skeleton" ? "#" : `${round.url}/${game.id}`}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         Ver en Lichess
       </a>
