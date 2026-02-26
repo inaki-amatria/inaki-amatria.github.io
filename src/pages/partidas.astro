@@ -1,9 +1,9 @@
 ---
 import Layout from "@components/layouts/Layout.astro";
 
-import LiveBoards from "@components/pages/partidas/LiveBoards.astro";
+import LiveBoards from "@components/pages/partidas/LiveBoards.tsx";
 ---
 
 <Layout>
-  <LiveBoards />
+  <LiveBoards client:load />
 </Layout>
