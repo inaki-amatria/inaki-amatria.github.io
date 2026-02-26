@@ -26,6 +26,10 @@ interface Game {
 const TOURNAMENT_ID = "GGjvzgTh";
 const POLL_INTERVAL = 5000;
 
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function parseLastMove(move?: string): Key[] | undefined {
   if (!move || move.length < 4) {
     return;
@@ -37,16 +41,18 @@ function LiveBoard({
   game,
   round,
   index,
+  mode = "live",
 }: {
   game: Game;
   round: Round;
   index: number;
+  mode?: "live" | "skeleton";
 }) {
   const boardRef = useRef<HTMLDivElement>(null);
   const cgRef = useRef<Api | null>(null);
 
   useEffect(() => {
-    if (!boardRef.current) {
+    if (mode === "skeleton" || !boardRef.current) {
       return;
     }
 
@@ -63,7 +69,7 @@ function LiveBoard({
   }, []);
 
   useEffect(() => {
-    if (!cgRef.current || !game.fen) {
+    if (mode === "skeleton" || !cgRef.current || !game.fen) {
       return;
     }
 
@@ -79,7 +85,12 @@ function LiveBoard({
   const finished = game.status && game.status !== "*";
 
   return (
-    <div class="flex flex-col bg-white rounded-3xl shadow-lg gap-4 p-4">
+    <div
+      class={[
+        "flex flex-col bg-white rounded-3xl shadow-lg gap-4 p-4",
+        mode === "skeleton" && "animate-pulse",
+      ].join(" ")}
+    >
       <span class="text-xs font-bold uppercase tracking-widest text-blue-900">
         Mesa {index + 1}
       </span>
@@ -87,46 +98,53 @@ function LiveBoard({
       {/* Black */}
       <div class="flex items-center justify-between gap-4">
         <h3 class="flex-1 truncate text-gray-600 font-bold font-serif italic">
-          <span class="text-blue-900">{black?.title}</span>{" "}
-          {black?.name ?? "Negro"}
+          <span class="text-blue-900">
+            {mode === "skeleton" ? "" : black?.title}
+          </span>{" "}
+          {mode === "skeleton" ? "Negro" : black?.name ?? "Negro"}
         </h3>
         <span class="text-blue-900 font-serif font-bold">
-          {black?.rating ?? 0}
+          {mode === "skeleton" ? "0" : black?.rating ?? 0}
         </span>
       </div>
 
       {/* Board */}
       <div class="relative aspect-square bg-gray-50 rounded-lg overflow-hidden shadow-inner">
-        <div ref={boardRef} class="w-full h-full" />
-
-        <div
-          class={[
-            "absolute inset-0 bg-blue-900/20 flex items-center justify-center z-20 transition-opacity duration-500",
-            finished ? "opacity-100" : "opacity-0 pointer-events-none",
-          ].join(" ")}
-        >
-          <span class="text-6xl font-bold font-serif text-white drop-shadow-lg">
-            {game.status?.replace("-", " - ")}
-          </span>
-        </div>
+        {mode === "skeleton" ? (
+          <div class="w-full h-full bg-gray-200" />
+        ) : (
+          <div ref={boardRef} class="w-full h-full" />
+        )}
+        {mode === "live" && (
+          <div
+            class={[
+              "absolute inset-0 bg-blue-900/20 flex items-center justify-center z-20 transition-opacity duration-500",
+              finished ? "opacity-100" : "opacity-0 pointer-events-none",
+            ].join(" ")}
+          >
+            <span class="text-6xl font-bold font-serif text-white drop-shadow-lg">
+              {game.status?.replace("-", " - ")}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* White */}
       <div class="flex items-center justify-between gap-4">
         <h3 class="flex-1 truncate text-gray-600 font-bold font-serif italic">
-          <span class="text-blue-900">{white?.title}</span>{" "}
-          {white?.name ?? "Blanco"}
+          <span class="text-blue-900">
+            {mode === "skeleton" ? "" : white?.title}
+          </span>{" "}
+          {mode === "skeleton" ? "Blanco" : white?.name ?? "Blanco"}
         </h3>
         <span class="text-blue-900 font-serif font-bold">
-          {white?.rating ?? 0}
+          {mode === "skeleton" ? "0" : white?.rating ?? 0}
         </span>
       </div>
 
       <a
         class="text-xs text-gray-600 hover:text-blue-900 self-end"
-        href={`${round.url}/${game.id}`}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={mode === "skeleton" ? "#" : `${round.url}/${game.id}`}
       >
         Ver en Lichess
       </a>
@@ -138,6 +156,7 @@ export default function LiveBoards() {
   const [rounds, setRounds] = useState<Round[]>([]);
   const [currentRound, setCurrentRound] = useState<Round | null>(null);
   const [games, setGames] = useState<Game[]>([]);
+  const [isLoadingRound, setIsLoadingRound] = useState(true);
 
   useEffect(() => {
     async function init() {
@@ -145,6 +164,8 @@ export default function LiveBoards() {
         `https://lichess.org/api/broadcast/${TOURNAMENT_ID}`,
       );
       const data = await res.json();
+
+      await sleep(300 + Math.random() * 400);
 
       setRounds(data.rounds);
       setCurrentRound(data.rounds[0]);
@@ -166,7 +187,10 @@ export default function LiveBoards() {
       );
       const data = await res.json();
 
+      await sleep(300 + Math.random() * 400);
+
       setGames(data.games);
+      setIsLoadingRound(false);
 
       timeout = window.setTimeout(poll, POLL_INTERVAL);
     }
@@ -190,29 +214,39 @@ export default function LiveBoards() {
             const r = rounds.find(r => r.id === e.currentTarget.value);
             if (r) {
               setCurrentRound(r);
+              setGames([]);
+              setIsLoadingRound(true);
             }
           }}
         >
-          {rounds.length === 0 ? (
-            <option>Cargando rondas...</option>
-          ) : (
+          {currentRound ? (
             rounds.map((r, i) => (
               <option value={r.id}>
                 Ronda {i + 1}
               </option>
             ))
+          ) : (
+            <option>Cargando rondas...</option>
           )}
         </select>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {games.map((game, i) => (
+          {isLoadingRound ? (Array.from({ length: 6 }).map((_, i) => (
+            <LiveBoard
+              key={`skeleton-${i}`}
+              game={{ id: `skeleton-${i}` }}
+              round={currentRound!}
+              index={i}
+              mode="skeleton"
+            />
+          ))) : (games.map((game, i) => (
             <LiveBoard
               key={game.id}
               game={game}
               round={currentRound!}
               index={i}
             />
-          ))}
+          )))}
         </div>
       </div>
     </section>
