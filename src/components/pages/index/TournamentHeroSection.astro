@@ -2,8 +2,6 @@
 import { Image } from "astro:assets";
 
 import Players from "@assets/images/Index.TournamentHeroSection.webp";
-
-import Button from "@components/ui/Button.astro";
 ---
 
 <section
@@ -53,8 +51,9 @@ import Button from "@components/ui/Button.astro";
       </p>
 
       <div class="flex flex-wrap gap-4 mt-2">
-        <Button href="/reglamento"> Inscribirme ahora </Button>
-        <Button href="/reglamento" variant="secondary"> Ver reglamento </Button>
+        <a href="/reglamento" class="button button-primary">Inscribirme ahora</a
+        >
+        <a href="/reglamento" class="button button-secondary">Ver reglamento</a>
       </div>
     </div>
   </div>

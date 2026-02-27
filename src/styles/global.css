@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+.button {
+  @apply px-4 py-2 rounded-full font-bold text-base text-center shadow-md;
+  @apply transition-all duration-300 hover:ring-2 active:scale-95;
+}
+
+.button-primary {
+  @apply bg-blue-900 text-white hover:ring-blue-600/50 hover:shadow-lg;
+}
+
+.button-secondary {
+  @apply bg-blue-900 text-white hover:ring-blue-600/50 hover:shadow-lg;
+  @apply bg-white text-blue-900 hover:ring-white/50 hover:shadow-lg;
+}

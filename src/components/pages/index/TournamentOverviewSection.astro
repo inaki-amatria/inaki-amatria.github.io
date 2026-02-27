@@ -3,8 +3,6 @@ import { Image } from "astro:assets";
 
 import Clock from "@assets/icons/Clock.svg";
 import Podium from "@assets/images/Index.TournamentOverviewSection.webp";
-
-import Button from "@components/ui/Button.astro";
 ---
 
 <section class="mb-12">
@@ -41,7 +39,9 @@ import Button from "@components/ui/Button.astro";
           femenina.
         </p>
 
-        <Button href="/premios" class="w-fit">Ver desglose de premios</Button>
+        <a href="/premios" class="button button-primary w-fit"
+          >Ver desglose de premios</a
+        >
       </div>
     </div>
 
