@@ -1,20 +1,20 @@
 import type { FunctionalComponent } from "preact";
 
-type ContactFormElements = {
+type ContactFormIslandElements = {
   name: HTMLInputElement;
   subject: HTMLInputElement;
   message: HTMLTextAreaElement;
 };
 
-type ContactFormElement = HTMLFormElement & {
-  elements: ContactFormElements;
+type ContactFormIslandElement = HTMLFormElement & {
+  elements: ContactFormIslandElements;
 };
 
-const ContactForm: FunctionalComponent = () => {
+const ContactFormIsland: FunctionalComponent = () => {
   const sendEmail = (event: Event) => {
     event.preventDefault();
 
-    const form = event.currentTarget as ContactFormElement;
+    const form = event.currentTarget as ContactFormIslandElement;
 
     const name = form.elements.name.value;
     const subject = form.elements.subject.value;
@@ -62,4 +62,4 @@ const ContactForm: FunctionalComponent = () => {
   );
 };
 
-export default ContactForm;
+export default ContactFormIsland;
