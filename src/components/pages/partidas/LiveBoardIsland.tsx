@@ -1,36 +1,29 @@
-import { useEffect, useState, useRef } from "preact/hooks";
+import { useEffect, useRef } from "preact/hooks";
 import { Chessground } from "@lichess-org/chessground";
 
 import type { Api } from "@lichess-org/chessground/api";
 import type { Key } from "@lichess-org/chessground/types";
 
-import "./LiveBoards.css";
+import "./LiveBoardIsland.css";
 
-interface Round {
+export interface Round {
   id: string;
   slug: string;
   url: string;
 }
 
-interface Player {
+export interface Player {
   name?: string;
   title?: string;
   rating?: number;
 }
 
-interface Game {
+export interface Game {
   id: string;
   fen?: string;
   lastMove?: string;
   players?: Player[];
   status?: string;
-}
-
-const TOURNAMENT_ID = "GGjvzgTh";
-const POLL_INTERVAL = 5000;
-
-function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function parseLastMove(move?: string): Key[] | undefined {
@@ -40,7 +33,7 @@ function parseLastMove(move?: string): Key[] | undefined {
   return [move.slice(0, 2), move.slice(2, 4)] as Key[];
 }
 
-function LiveBoard({
+export default function LiveBoard({
   game,
   round,
   index,
@@ -154,106 +147,5 @@ function LiveBoard({
         Ver en Lichess
       </a>
     </div>
-  );
-}
-
-export default function LiveBoards() {
-  const [rounds, setRounds] = useState<Round[]>([]);
-  const [currentRound, setCurrentRound] = useState<Round | null>(null);
-  const [games, setGames] = useState<Game[]>([]);
-  const [isLoadingRound, setIsLoadingRound] = useState(true);
-
-  useEffect(() => {
-    async function init() {
-      const res = await fetch(
-        `https://lichess.org/api/broadcast/${TOURNAMENT_ID}`,
-      );
-      const data = await res.json();
-
-      await sleep(300 + Math.random() * 400);
-
-      setRounds(data.rounds);
-      setCurrentRound(data.rounds[0]);
-    }
-
-    init();
-  }, []);
-
-  useEffect(() => {
-    if (!currentRound) {
-      return;
-    }
-
-    let timeout: number;
-
-    async function poll() {
-      const res = await fetch(
-        `https://lichess.org/api/broadcast/${TOURNAMENT_ID}/${currentRound!.slug}/${currentRound!.id}`,
-      );
-      const data = await res.json();
-
-      await sleep(300 + Math.random() * 400);
-
-      setGames(data.games);
-      setIsLoadingRound(false);
-
-      timeout = window.setTimeout(poll, POLL_INTERVAL);
-    }
-
-    poll();
-
-    return () => clearTimeout(timeout);
-  }, [currentRound]);
-
-  return (
-    <section class="mb-12">
-      <div class="flex flex-col gap-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-blue-900">
-          Sigue el torneo en directo
-        </h2>
-
-        <select
-          class="bg-white text-gray-600 text-base rounded-full px-4 py-2 shadow-md h-fit w-fit"
-          value={currentRound?.id}
-          onChange={(e) => {
-            const r = rounds.find(r => r.id === e.currentTarget.value);
-            if (r) {
-              setCurrentRound(r);
-              setGames([]);
-              setIsLoadingRound(true);
-            }
-          }}
-        >
-          {currentRound ? (
-            rounds.map((r, i) => (
-              <option value={r.id}>
-                Ronda {i + 1}
-              </option>
-            ))
-          ) : (
-            <option>Cargando rondas...</option>
-          )}
-        </select>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {isLoadingRound ? (Array.from({ length: 6 }).map((_, i) => (
-            <LiveBoard
-              key={`skeleton-${i}`}
-              game={{ id: `skeleton-${i}` }}
-              round={currentRound!}
-              index={i}
-              mode="skeleton"
-            />
-          ))) : (games.map((game, i) => (
-            <LiveBoard
-              key={game.id}
-              game={game}
-              round={currentRound!}
-              index={i}
-            />
-          )))}
-        </div>
-      </div>
-    </section>
   );
 }
