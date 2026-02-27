@@ -56,7 +56,7 @@ const ContactFormIsland: FunctionalComponent = () => {
       />
 
       <button type="submit" class="px-4 py-2 rounded-full font-bold text-base text-center shadow-md transition-all duration-300 hover:ring-2 active:scale-95 bg-blue-900 text-white hover:ring-blue-600/50 hover:shadow-lg w-fit cursor-pointer">
-        Enviar
+        Enviar mensaje
       </button>
     </form>
   );
