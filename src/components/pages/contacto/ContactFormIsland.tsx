@@ -58,6 +58,10 @@ const ContactFormIsland: FunctionalComponent = () => {
       <button type="submit" class="px-4 py-2 rounded-full font-bold text-base text-center shadow-md transition-all duration-300 hover:ring-2 active:scale-95 bg-blue-900 text-white hover:ring-blue-600/50 hover:shadow-lg w-fit cursor-pointer">
         Enviar mensaje
       </button>
+
+      <p class="text-sm text-gray-600 italic mt-2">
+        Al enviar el mensaje se abrirá una nueva pestaña con tu cliente de correo electrónico.
+      </p>
     </form>
   );
 };
