@@ -4,7 +4,6 @@ import Instagram from "@assets/icons/Instagram.svg";
 import Twitter from "@assets/icons/Twitter.svg";
 import YouTube from "@assets/icons/YouTube.svg";
 
-import Link from "@components/ui/Link.astro";
 import SocialLink from "@components/ui/SocialLink.astro";
 
 const links = [
@@ -48,9 +47,9 @@ const socialLinks = {
       <nav class="flex flex-col gap-2">
         {
           links.map((link) => (
-            <Link href={link.href} class="text-sm w-fit">
+            <a href={link.href} class="link text-sm">
               {link.label}
-            </Link>
+            </a>
           ))
         }
       </nav>

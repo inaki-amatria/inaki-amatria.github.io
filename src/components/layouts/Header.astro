@@ -1,5 +1,4 @@
 ---
-import Link from "@components/ui/Link.astro";
 import Logo from "@components/ui/Logo.astro";
 
 const links = [
@@ -20,7 +19,7 @@ const links = [
   <div
     class="flex overflow-x-auto no-scrollbar whitespace-nowrap w-full md:w-auto gap-8"
   >
-    {links.map((link) => <Link href={link.href}>{link.label}</Link>)}
+    {links.map((link) => <a href={link.href} class="link">{link.label}</a>)}
   </div>
 
   <a href="/contacto" class="button button-primary hidden md:block">Contacto</a>

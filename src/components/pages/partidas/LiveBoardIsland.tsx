@@ -139,7 +139,7 @@ export default function LiveBoard({
       </div>
 
       <a
-        class="text-xs text-gray-600 hover:text-blue-900 self-end"
+        class="link text-xs self-end"
         href={mode === "skeleton" ? "#" : `${round.url}/${game.id}`}
         target="_blank"
         rel="noopener noreferrer"
