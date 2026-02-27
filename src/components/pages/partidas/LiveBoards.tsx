@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "preact/hooks";
 import { Chessground } from "@lichess-org/chessground";
+
 import type { Api } from "@lichess-org/chessground/api";
 import type { Key } from "@lichess-org/chessground/types";
 
