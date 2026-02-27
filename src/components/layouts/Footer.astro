@@ -4,8 +4,6 @@ import Instagram from "@assets/icons/Instagram.svg";
 import Twitter from "@assets/icons/Twitter.svg";
 import YouTube from "@assets/icons/YouTube.svg";
 
-import SocialLink from "@components/ui/SocialLink.astro";
-
 const links = [
   { href: "/", label: "Inicio" },
   { href: "/reglamento", label: "Reglamento" },
@@ -62,7 +60,15 @@ const socialLinks = {
       <div class="flex flex-wrap gap-4">
         {
           Object.values(socialLinks).map(({ href, label, Icon }) => (
-            <SocialLink href={href} label={label} Icon={Icon} />
+            <a
+              href={href}
+              aria-label={label}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-blue-50 p-3 rounded-2xl text-blue-900 hover:bg-blue-900 hover:text-white shadow-sm transition-all duration-300"
+            >
+              <Icon class="w-5 h-5" />
+            </a>
           ))
         }
       </div>
