@@ -1,8 +1,8 @@
 ---
-import Footer from "@components/sections/Footer.astro";
-import NavBar from "@components/sections/NavBar.astro";
-
 import "@styles/global.css";
+
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
 ---
 
 <!doctype html>
@@ -28,7 +28,7 @@ import "@styles/global.css";
   <body
     class="bg-gray-50 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 font-['Inter'] antialiased"
   >
-    <NavBar />
+    <Header />
     <slot />
     <Footer />
   </body>
