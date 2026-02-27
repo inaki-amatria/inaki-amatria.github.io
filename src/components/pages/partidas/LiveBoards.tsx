@@ -3,6 +3,8 @@ import { Chessground } from "@lichess-org/chessground";
 import type { Api } from "@lichess-org/chessground/api";
 import type { Key } from "@lichess-org/chessground/types";
 
+import "./LiveBoards.css";
+
 interface Round {
   id: string;
   slug: string;
