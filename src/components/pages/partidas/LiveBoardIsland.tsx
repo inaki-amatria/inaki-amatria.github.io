@@ -22,6 +22,7 @@ export interface Game {
   id: string;
   fen?: string;
   lastMove?: string;
+  check?: "+" | "#";
   players?: Player[];
   status?: string;
 }
@@ -31,6 +32,25 @@ function parseLastMove(move?: string): Key[] | undefined {
     return;
   }
   return [move.slice(0, 2), move.slice(2, 4)] as Key[];
+}
+
+function sideToMove(fen: string): "white" | "black" | undefined {
+  // FEN: "pieces side castling enpassant halfmove fullmove"
+  const parts = fen.split(" ");
+  if (parts.length < 2) {
+    return;
+  }
+  return parts[1] === "w" ? "white" : "black";
+}
+
+function chessgroundCheck(
+  fen?: string,
+  check?: "+" | "#",
+): "white" | "black" | undefined {
+  if (!fen || !check) {
+    return;
+  }
+  return sideToMove(fen);
 }
 
 export default function LiveBoard({
@@ -56,6 +76,7 @@ export default function LiveBoard({
       fen: game.fen,
       viewOnly: true,
       coordinates: false,
+      check: chessgroundCheck(game.fen, game.check),
     });
 
     return () => {
@@ -72,6 +93,7 @@ export default function LiveBoard({
     cgRef.current.set({
       fen: game.fen,
       lastMove: parseLastMove(game.lastMove),
+      check: chessgroundCheck(game.fen, game.check),
     });
   }, [game.fen, game.lastMove]);
 
