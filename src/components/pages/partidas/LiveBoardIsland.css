@@ -264,10 +264,10 @@ cg-board square.selected {
 
 cg-board square.check {
   background: radial-gradient(ellipse at center,
-      rgba(255, 0, 0, 1) 0%,
-      rgba(231, 0, 0, 1) 25%,
-      rgba(169, 0, 0, 0) 89%,
-      rgba(158, 0, 0, 0) 100%);
+      rgba(255, 155, 65, 0.90) 0%,
+      rgba(235, 135, 55, 0.65) 28%,
+      rgba(205, 115, 45, 0.35) 65%,
+      rgba(180, 100, 40, 0) 90%);
 }
 
 cg-board square.current-premove {
