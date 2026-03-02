@@ -1,0 +1,33 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import ByesSection from "@components/pages/reglamento/ByesSection.astro";
+import CompetitionSystemSection from "@components/pages/reglamento/CompetitionSystemSection.astro";
+import DataProtectionSection from "@components/pages/reglamento/DataProtectionSection.astro";
+import FinalProvisionsSection from "@components/pages/reglamento/FinalProvisionsSection.astro";
+import GeneralInformationSection from "@components/pages/reglamento/GeneralInformationSection.astro";
+import GroupsAndCategoriesSection from "@components/pages/reglamento/GroupsAndCategoriesSection.astro";
+import PlayingRegulationsSection from "@components/pages/reglamento/PlayingRegulationsSection.astro";
+import PontevedraSpecialRuleSection from "@components/pages/reglamento/PontevedraSpecialRuleSection.astro";
+import RegistrationSection from "@components/pages/reglamento/RegistrationSection.astro";
+import TieBreaksSection from "@components/pages/reglamento/TieBreaksSection.astro";
+import TimeControlSection from "@components/pages/reglamento/TimeControlSection.astro";
+
+import TableOfContentsIsland from "@components/pages/reglamento/TableOfContentsIsland.tsx";
+---
+
+<Layout>
+  <TableOfContentsIsland client:load>
+    <GeneralInformationSection />
+    <CompetitionSystemSection />
+    <GroupsAndCategoriesSection />
+    <TimeControlSection />
+    <ByesSection />
+    <TieBreaksSection />
+    <PontevedraSpecialRuleSection />
+    <PlayingRegulationsSection />
+    <RegistrationSection />
+    <DataProtectionSection />
+    <FinalProvisionsSection />
+  </TableOfContentsIsland>
+</Layout>
