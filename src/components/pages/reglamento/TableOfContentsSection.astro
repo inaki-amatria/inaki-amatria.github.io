@@ -19,8 +19,11 @@ const { sections } = Astro.props;
       {
         sections.map((section) => (
           <a
-            href={`#${section.id}`}
+            href="javascript:void(0)"
+            data-target={section.id}
             class="block px-4 py-3 text-sm hover:bg-blue-50 link"
+            role="link"
+            tabindex="0"
           >
             {section.title}
           </a>
@@ -38,8 +41,11 @@ const { sections } = Astro.props;
       {
         sections.map((section) => (
           <a
-            href={`#${section.id}`}
+            href="javascript:void(0)"
+            data-target={section.id}
             class="border-l border-gray-200 pl-4 pt-2 pb-2 link hover:border-blue-900 text-sm"
+            role="link"
+            tabindex="0"
           >
             {section.title}
           </a>
@@ -62,31 +68,49 @@ const { sections } = Astro.props;
 <script defer>
   const offset = 90;
 
-  const handleClick = (link) => {
-    const targetId = link.getAttribute("href")?.substring(1);
-    if (!targetId) {
-      return;
-    }
-
+  function scrollToTarget(targetId) {
     const target = document.getElementById(targetId);
     if (!target) {
       return;
     }
 
-    const details = link.closest("details.lg\\:hidden");
-    details?.removeAttribute("open");
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
 
-    const top =
-      target.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top, behavior: "smooth" });
-  };
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+  }
 
   document.addEventListener("click", (e) => {
-    const link = e.target.closest("a.link");
+    const link = e.target.closest("a.link[data-target]");
     if (!link) {
       return;
     }
+
     e.preventDefault();
-    handleClick(link);
+
+    const details = link.closest("details.lg\\:hidden");
+    details?.removeAttribute("open");
+
+    scrollToTarget(link.dataset.target);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") {
+      return;
+    }
+
+    const link = e.target.closest("a.link[data-target]");
+    if (!link) {
+      return;
+    }
+
+    e.preventDefault();
+
+    const details = link.closest("details.lg\\:hidden");
+    details?.removeAttribute("open");
+
+    scrollToTarget(link.dataset.target);
   });
 </script>
