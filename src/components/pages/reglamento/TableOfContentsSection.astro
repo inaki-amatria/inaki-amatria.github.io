@@ -6,16 +6,41 @@ export interface Props {
 const { sections } = Astro.props;
 ---
 
-<div class="flex flex-col lg:flex-row gap-8">
+<div class="flex flex-col lg:flex-row gap-12">
+  <details class="lg:hidden sticky top-6 bg-white rounded-xl shadow-md">
+    <summary
+      class="cursor-pointer list-none z-20 px-4 py-3 flex justify-between items-center text-blue-900 font-bold"
+    >
+      Reglamento
+      <span class="toc-arrow text-sm">▼</span>
+    </summary>
+
+    <nav>
+      {
+        sections.map((section) => (
+          <a
+            href={`#${section.id}`}
+            class="block px-4 py-3 text-sm hover:bg-blue-50 link"
+          >
+            {section.title}
+          </a>
+        ))
+      }
+    </nav>
+  </details>
+
   <div class="flex-1">
     <slot />
   </div>
 
-  <aside class="hidden lg:block sticky top-12 max-w-xs self-start">
-    <nav class="flex flex-col gap-2 border-l-2 border-blue-900 pl-4">
+  <aside class="hidden lg:block sticky top-12 mb-12 max-w-72 self-start">
+    <nav class="flex flex-col">
       {
         sections.map((section) => (
-          <a href={`#${section.id}`} class="link text-sm">
+          <a
+            href={`#${section.id}`}
+            class="border-l border-gray-200 pl-4 pt-2 pb-2 link hover:border-blue-900 text-sm"
+          >
             {section.title}
           </a>
         ))
@@ -23,3 +48,51 @@ const { sections } = Astro.props;
     </nav>
   </aside>
 </div>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  details[open] .toc-arrow {
+    transform: rotate(180deg);
+  }
+
+  .toc-arrow {
+    transition: transform 0.3s ease;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const details = document.querySelector<HTMLDetailsElement>(
+      "details.lg\\:hidden",
+    );
+    const offset = 90;
+
+    const handleClick = (link: HTMLAnchorElement) => {
+      const targetId = link.getAttribute("href")?.substring(1);
+      if (!targetId) {
+        return;
+      }
+
+      const target = document.getElementById(targetId);
+      if (!target) {
+        return;
+      }
+
+      details?.removeAttribute("open");
+
+      const top =
+        target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top });
+    };
+
+    details?.querySelectorAll<HTMLAnchorElement>("a.link").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        handleClick(link);
+      });
+    });
+  });
+</script>
