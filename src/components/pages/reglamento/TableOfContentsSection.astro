@@ -6,7 +6,7 @@ export interface Props {
 const { sections } = Astro.props;
 ---
 
-<div class="flex flex-col lg:flex-row gap-12">
+<div class="flex flex-col lg:flex-row gap-8">
   <details class="lg:hidden sticky top-6 bg-white rounded-xl shadow-md">
     <summary
       class="cursor-pointer list-none z-20 px-4 py-3 flex justify-between items-center text-blue-900 font-bold"
@@ -36,7 +36,7 @@ const { sections } = Astro.props;
     <slot />
   </div>
 
-  <aside class="hidden lg:block sticky top-12 mb-12 max-w-72 self-start">
+  <aside class="hidden lg:block sticky top-12 mb-12 self-start">
     <nav class="flex flex-col">
       {
         sections.map((section) => (
