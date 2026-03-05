@@ -1,0 +1,61 @@
+---
+import AccomodationHeroSection from "./AccomodationHeroSection.astro";
+---
+
+<section class="mb-12">
+  <AccomodationHeroSection class="lg:hidden h-64 mb-12" />
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2 flex flex-col gap-4 text-gray-600">
+      <h2 class="text-3xl md:text-4xl font-bold text-blue-900">
+        Alojamiento y destino
+      </h2>
+
+      <p>
+        Para tu estancia durante el torneo te recomendamos consultar plataformas
+        como Booking o Airbnb, donde encontrarás una amplia oferta de
+        alojamientos en Pontevedra y su entorno.
+      </p>
+
+      <p>
+        Pontevedra ofrece opciones fantásticas, pero si dispones de vehículo te
+        animamos a ampliar tu búsqueda y descubrir algunos de los pueblos
+        costeros más emblemáticos de las Rías Baixas.
+      </p>
+
+      <p>
+        Localidades como Poio, Combarro, Raxó, Sanxenxo o incluso Vigo se
+        encuentran a poca distancia y te permitirán combinar el torneo con
+        playa, gastronomía y paisajes únicos.
+      </p>
+
+      <p>
+        Aprovecha el Torneo Internacional Ciudad de Pontevedra para vivir una
+        experiencia completa: ajedrez de alto nivel y la magia del verano
+        gallego.
+      </p>
+
+      <div class="flex flex-wrap gap-4 mt-2">
+        <a
+          href="https://www.turismoriasbaixas.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button button-primary"
+        >
+          Descubrir las Rías Baixas
+        </a>
+
+        <a
+          href="https://www.turismo.gal"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button button-secondary"
+        >
+          Turismo de Galicia
+        </a>
+      </div>
+    </div>
+
+    <AccomodationHeroSection class="hidden lg:block h-96" />
+  </div>
+</section>
