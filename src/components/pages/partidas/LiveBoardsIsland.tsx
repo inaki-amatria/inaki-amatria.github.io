@@ -62,7 +62,7 @@ export default function LiveBoardsIsland() {
   return (
     <div class="flex flex-col gap-4">
       <select
-        class="bg-white text-gray-600 text-base rounded-full px-4 py-2 shadow-md h-fit w-fit"
+        class="bg-white text-gray-600 text-base rounded-full px-4 py-2 shadow-md w-fit"
         value={currentRound?.id}
         onChange={(e) => {
           const r = rounds.find(r => r.id === e.currentTarget.value);
