@@ -1,4 +1,8 @@
 ---
+import TableOfContentsIsland from "./TableOfContentsIsland.tsx";
+
+import "./TableOfContentsSection.css";
+
 export interface Props {
   sections: { id: string; title: string }[];
 }
@@ -19,11 +23,9 @@ const { sections } = Astro.props;
       {
         sections.map((section) => (
           <a
-            href="javascript:void(0)"
+            href={`#${section.id}`}
             data-target={section.id}
-            class="block px-4 py-3 text-sm hover:bg-blue-50 link"
-            role="link"
-            tabindex="0"
+            class="toc-link block hover:bg-blue-50 text-gray-600 hover:text-blue-900 text-sm px-4 py-3"
           >
             {section.title}
           </a>
@@ -41,11 +43,9 @@ const { sections } = Astro.props;
       {
         sections.map((section) => (
           <a
-            href="javascript:void(0)"
+            href={`#${section.id}`}
             data-target={section.id}
-            class="border-l border-gray-200 pl-4 pt-2 pb-2 link hover:border-blue-900 text-sm"
-            role="link"
-            tabindex="0"
+            class="toc-link border-l border-gray-200 text-gray-600 hover:border-blue-900 hover:text-blue-900 text-sm pl-4 pt-2 pb-2"
           >
             {section.title}
           </a>
@@ -55,62 +55,4 @@ const { sections } = Astro.props;
   </aside>
 </div>
 
-<style>
-  details[open] .toc-arrow {
-    transform: rotate(180deg);
-  }
-
-  .toc-arrow {
-    transition: transform 0.3s ease;
-  }
-</style>
-
-<script defer>
-  const offset = 90;
-
-  function scrollToTarget(targetId) {
-    const target = document.getElementById(targetId);
-    if (!target) {
-      return;
-    }
-
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-
-    window.scrollTo({
-      top,
-      behavior: "smooth",
-    });
-  }
-
-  document.addEventListener("click", (e) => {
-    const link = e.target.closest("a.link[data-target]");
-    if (!link) {
-      return;
-    }
-
-    e.preventDefault();
-
-    const details = link.closest("details.lg\\:hidden");
-    details?.removeAttribute("open");
-
-    scrollToTarget(link.dataset.target);
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter" && e.key !== " ") {
-      return;
-    }
-
-    const link = e.target.closest("a.link[data-target]");
-    if (!link) {
-      return;
-    }
-
-    e.preventDefault();
-
-    const details = link.closest("details.lg\\:hidden");
-    details?.removeAttribute("open");
-
-    scrollToTarget(link.dataset.target);
-  });
-</script>
+<TableOfContentsIsland client:load />

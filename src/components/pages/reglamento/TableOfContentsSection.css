@@ -1,0 +1,7 @@
+details[open] .toc-arrow {
+  transform: rotate(180deg);
+}
+
+.toc-arrow {
+  transition: transform 0.3s ease;
+}
