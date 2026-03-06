@@ -1,0 +1,50 @@
+---
+import ConcelloPontevedra from "@assets/logos/ConcelloPontevedra.svg";
+import DeporteGalego from "@assets/logos/DeporteGalego.svg";
+import DeportePontevedra from "@assets/logos/DeportePontevedra.svg";
+import DeputacionPontevedra from "@assets/logos/DeputacionPontevedra.svg";
+import UniversidadeVigo from "@assets/logos/UniversidadeVigo.svg";
+
+const sponsors = [
+  { logo: ConcelloPontevedra, name: "Concello de Pontevedra" },
+  { logo: DeporteGalego, name: "Deporte Galego" },
+  { logo: DeportePontevedra, name: "Deporte Pontevedra" },
+  { logo: DeputacionPontevedra, name: "Deputación de Pontevedra" },
+  { logo: UniversidadeVigo, name: "Universidade de Vigo" },
+];
+---
+
+<section class="flex flex-col gap-8 mb-12">
+  <div class="flex flex-col gap-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900">
+      Nuestros patrocinadores
+    </h2>
+
+    <p class="text-gray-600">
+      El respaldo institucional y técnico que garantiza la excelencia del torneo
+      año tras año.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    {
+      sponsors.map(({ logo: Logo, name }) => (
+        <div class="bg-white rounded-3xl shadow-lg flex items-center justify-center aspect-video p-8">
+          <Logo aria-label={name} class="h-12 w-full text-blue-900" />
+        </div>
+      ))
+    }
+  </div>
+
+  <div
+    class="flex flex-col md:flex-row md:items-center justify-between gap-4 p-8 bg-blue-50 rounded-3xl shadow-lg"
+  >
+    <p class="text-blue-900">
+      ¿Tu empresa quiere impulsar el ajedrez internacional? Únete como
+      colaborador del torneo.
+    </p>
+    <a href="/contacto" class="button button-primary whitespace-nowrap w-fit">
+      Solicitar información
+    </a>
+  </div>
+</section>
