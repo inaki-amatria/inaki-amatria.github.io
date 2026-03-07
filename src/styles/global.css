@@ -10,7 +10,6 @@
 }
 
 .button-secondary {
-  @apply bg-blue-900 text-white hover:ring-blue-600/50 hover:shadow-lg;
   @apply bg-white text-blue-900 hover:ring-white/50 hover:shadow-lg;
 }
 
