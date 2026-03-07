@@ -53,7 +53,7 @@ function chessgroundCheck(
   return sideToMove(fen);
 }
 
-export default function LiveBoard({
+export default function LiveBoardIsland({
   game,
   round,
   index,
