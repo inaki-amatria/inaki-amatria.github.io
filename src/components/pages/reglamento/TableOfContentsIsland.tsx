@@ -31,7 +31,7 @@ export default function TableOfContentsIsland() {
 
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
 
-      window.scrollTo({ top, behavior: "smooth" });
+      window.scrollTo({ top });
       if (id !== window.location.hash.substring(1)) {
         history.replaceState(null, "", `#${id}`);
       }
