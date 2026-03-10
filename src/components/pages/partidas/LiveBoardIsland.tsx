@@ -161,7 +161,7 @@ export default function LiveBoardIsland({
       </div>
 
       <a
-        class="link text-xs self-end"
+        class="link text-sm self-end"
         href={mode === "skeleton" ? "#" : `${round.url}/${game.id}`}
         target="_blank"
         rel="noopener noreferrer"
