@@ -1,0 +1,125 @@
+<section class="mb-12">
+  <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-8">Grupo B</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <div
+      class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-900 to-blue-950 p-6 flex flex-col gap-2 justify-end shadow-lg min-h-48"
+    >
+      <div
+        class="absolute top-4 right-4 text-white/10 font-serif italic font-bold text-8xl leading-none select-none"
+      >
+        1
+      </div>
+      <span
+        class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest bg-white/10 text-blue-200 w-fit"
+        >1.er clasificado</span
+      >
+      <span class="text-white text-5xl font-bold font-serif italic leading-none"
+        >1.000&euro;</span
+      >
+      <span class="text-blue-50/60 text-sm">+ Trofeo</span>
+    </div>
+
+    <div
+      class="relative overflow-hidden rounded-3xl bg-white p-6 flex flex-col gap-2 justify-end shadow-lg min-h-48"
+    >
+      <div
+        class="absolute top-4 right-4 text-blue-900/5 font-serif italic font-bold text-8xl leading-none select-none"
+      >
+        2
+      </div>
+      <span
+        class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest bg-blue-100 text-blue-900 w-fit"
+        >2.º clasificado</span
+      >
+      <span
+        class="text-blue-900 text-5xl font-bold font-serif italic leading-none"
+        >700&euro;</span
+      >
+      <span class="text-gray-600 text-sm">+ Trofeo</span>
+    </div>
+
+    <div
+      class="relative overflow-hidden rounded-3xl bg-white p-6 flex flex-col gap-2 justify-end shadow-lg min-h-48"
+    >
+      <div
+        class="absolute top-4 right-4 text-blue-900/5 font-serif italic font-bold text-8xl leading-none select-none"
+      >
+        3
+      </div>
+      <span
+        class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest bg-blue-100 text-blue-900 w-fit"
+        >3.er clasificado</span
+      >
+      <span
+        class="text-blue-900 text-5xl font-bold font-serif italic leading-none"
+        >500&euro;</span
+      >
+      <span class="text-gray-600 text-sm">+ Trofeo</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
+    {
+      [
+        { pos: "4.º", prize: "400€" },
+        { pos: "5.º", prize: "300€" },
+        { pos: "6.º", prize: "200€" },
+        { pos: "7.º", prize: "200€" },
+        { pos: "8.º", prize: "150€" },
+        { pos: "9.º", prize: "150€" },
+        { pos: "10.º", prize: "150€" },
+        { pos: "11.º", prize: "100€" },
+        { pos: "12.º", prize: "100€" },
+      ].map(({ pos, prize }) => (
+        <div class="bg-white rounded-2xl shadow-md px-4 py-3 flex items-center justify-between gap-2">
+          <span class="text-gray-600 text-sm">{pos}</span>
+          <span class="text-blue-900 font-bold text-sm">{prize}</span>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="flex items-center gap-4 mb-8">
+    <div class="h-px bg-gray-200 flex-1"></div>
+    <span class="text-xs font-bold uppercase tracking-widest text-gray-400"
+      >Premios especiales</span
+    >
+    <div class="h-px bg-gray-200 flex-1"></div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {
+      [
+        { label: "1.º Sub-1800", prize: "150€" },
+        { label: "1.º Sub-1600", prize: "150€" },
+        { label: "Mejor clasificada femenina", prize: "150€ + Trofeo" },
+        { label: "Mejor veterano", prize: "Trofeo + Libro" },
+      ].map(({ label, prize }) => (
+        <div class="bg-white rounded-2xl shadow-md px-4 py-3 flex items-center justify-between gap-2">
+          <span class="text-gray-600 text-sm">{label}</span>
+          <span class="text-blue-900 font-bold text-sm shrink-0 ml-4">
+            {prize}
+          </span>
+        </div>
+      ))
+    }
+
+    <div class="bg-white rounded-2xl shadow-md px-4 py-3 sm:col-span-2">
+      <div class="flex items-center justify-between gap-2">
+        <div>
+          <span class="text-gray-600 text-sm"
+            >Categorías de base (Sub-16 a Sub-08)</span
+          >
+          <p class="text-gray-400 text-xs mt-1">
+            Material deportivo o didáctico para los dos primeros clasificados de
+            cada categoría.
+          </p>
+        </div>
+        <span class="text-blue-900 font-bold text-sm shrink-0 ml-4"
+          >Material</span
+        >
+      </div>
+    </div>
+  </div>
+</section>
