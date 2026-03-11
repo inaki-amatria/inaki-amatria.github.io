@@ -1,3 +1,7 @@
+---
+import MapIsland from "@components/other/MapIsland.tsx";
+---
+
 <section id="encuentranos" class="mb-12">
   <div class="flex flex-col gap-4 mb-8">
     <h2 class="text-3xl md:text-4xl font-bold text-blue-900">
@@ -9,13 +13,9 @@
     </p>
   </div>
 
-  <div class="overflow-hidden rounded-3xl h-72 shadow-lg">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2960.9754710141384!2d-8.636916!3d42.4283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2f71887010461b%3A0x8673322f51f930e1!2sPraza%20Ferm%C3%ADn%20Bouza%20Brey%2C%202%2C%2036003%20Pontevedra!5e0!3m2!1ses!2ses!4v1708260000000!5m2!1ses!2ses"
-      class="w-full h-full"
-      style="border:0;"
-      allowfullscreen=""
-      loading="eager"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
+  <MapIsland
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2960.9754710141384!2d-8.636916!3d42.4283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2f71887010461b%3A0x8673322f51f930e1!2sPraza%20Ferm%C3%ADn%20Bouza%20Brey%2C%202%2C%2036003%20Pontevedra!5e0!3m2!1ses!2ses!4v1708260000000!5m2!1ses!2ses"
+    class="h-72"
+    client:load
+  />
 </section>

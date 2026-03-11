@@ -4,6 +4,8 @@ import Instagram from "@assets/icons/Instagram.svg";
 import Twitter from "@assets/icons/Twitter.svg";
 import YouTube from "@assets/icons/YouTube.svg";
 
+import ManageCookiesIsland from "@components/other/ManageCookiesIsland.tsx";
+
 const links = [
   { href: "/", label: "Inicio" },
   { href: "/reglamento", label: "Reglamento" },
@@ -64,6 +66,7 @@ const socialLinks = {
         Legal
       </h4>
       <nav class="flex flex-col gap-2">
+        <ManageCookiesIsland class="link text-sm" client:load />
         {
           legalLinks.map((link) => (
             <a href={link.href} class="link text-sm">
