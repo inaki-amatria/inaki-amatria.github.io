@@ -2,7 +2,7 @@ import { useState, useEffect } from "preact/hooks";
 
 const COOKIE_KEY = "cookie_consent";
 
-export default function CookieConsentBannerIsland() {
+export default function CookieConsentIsland() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function CookieConsentBannerIsland() {
   }
 
   return (
-    <div class="fixed bottom-6 right-6 z-50 w-[calc(100%-3rem)] max-w-sm">
+    <div class="fixed bottom-6 right-6 z-20 w-[calc(100%-3rem)] max-w-sm">
       <div class="bg-white rounded-3xl shadow-2xl p-6 flex flex-col gap-4">
         {/* Header */}
         <div class="flex flex-col gap-4">
