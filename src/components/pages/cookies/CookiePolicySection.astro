@@ -1,0 +1,122 @@
+---
+const browsers = [
+  {
+    label: "Google Chrome",
+    href: "https://support.google.com/chrome/answer/95647",
+  },
+  {
+    label: "Microsoft Edge",
+    href: "https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09",
+  },
+  {
+    label: "Mozilla Firefox",
+    href: "https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias",
+  },
+  {
+    label: "Safari",
+    href: "https://support.apple.com/es-es/guide/safari/sfri11471/mac",
+  },
+];
+---
+
+<section class="flex flex-col gap-4 mb-12 text-gray-600">
+  <h2 class="text-3xl md:text-4xl font-bold text-blue-900">
+    Política de cookies
+  </h2>
+
+  <p>
+    En cumplimiento de la Ley 34/2002 (LSSI-CE) y la Directiva Europea
+    2009/136/CE, le informamos del uso de cookies en este sitio web, titularidad
+    de Escola Xadrez Pontevedra. Las cookies son pequeños archivos de texto que
+    se descargan en su dispositivo al navegar: son seguras, no pueden ejecutar
+    código ni acceder a su equipo, y sirven exclusivamente para recordar sus
+    preferencias.
+  </p>
+
+  <h3 class="text-2xl font-bold text-blue-900 mt-4">Cookies que utilizamos</h3>
+
+  <p>
+    Este sitio web utiliza únicamente las cookies estrictamente necesarias para
+    su funcionamiento y las generadas por Google Maps cuando usted acepta su
+    uso.
+  </p>
+
+  <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+    <div class="grid grid-cols-4 px-6 py-3 bg-blue-50 rounded-t-3xl">
+      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
+        >Tipo</span
+      >
+      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
+        >Nombre</span
+      >
+      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
+        >Duración</span
+      >
+      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
+        >Finalidad</span
+      >
+    </div>
+    <div
+      class="grid grid-cols-4 px-6 py-4 hover:bg-blue-50 transition-colors items-start"
+    >
+      <span
+        class="text-xs font-bold px-2 py-1 rounded-full bg-blue-100 text-blue-900 uppercase tracking-widest w-fit"
+        >Propia</span
+      >
+      <span class="text-gray-600 text-sm font-mono">cookie_consent</span>
+      <span class="text-gray-600 text-sm">180 días</span>
+      <span class="text-gray-600 text-sm"
+        >Almacena la preferencia del usuario sobre el uso de cookies.</span
+      >
+    </div>
+    <div
+      class="grid grid-cols-4 px-6 py-4 hover:bg-blue-50 transition-colors items-start"
+    >
+      <span
+        class="text-xs font-bold px-2 py-1 rounded-full bg-gray-100 text-gray-600 uppercase tracking-widest w-fit"
+        >Terceros</span
+      >
+      <span class="text-gray-600 text-sm font-mono">Google Maps</span>
+      <span class="text-gray-600 text-sm">Sesión</span>
+      <span class="text-gray-600 text-sm">
+        Necesarias para mostrar los mapas interactivos. Solo se activan si usted
+        acepta las cookies. Consulte la
+        <a
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link">política de privacidad de Google</a
+        >.
+      </span>
+    </div>
+  </div>
+
+  <h3 class="text-2xl font-bold text-blue-900 mt-4">Gestión y bloqueo</h3>
+
+  <p>
+    Puede retirar su consentimiento en cualquier momento haciendo clic en
+    <strong class="text-blue-900">«Gestionar cookies»</strong> en el pie de página.
+    También puede configurar su navegador para bloquear o eliminar cookies, aunque
+    esto puede impedir la visualización de los mapas interactivos:
+  </p>
+
+  <ul class="list-disc ml-12 space-y-2">
+    {
+      browsers.map(({ label, href }) => (
+        <li>
+          <a href={href} target="_blank" rel="noopener noreferrer" class="link">
+            {label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p>
+    Nos reservamos el derecho a actualizar esta política para adaptarla a
+    cambios legislativos o técnicos. Para cualquier consulta puede contactarnos
+    en <a href="mailto:escola@xadrezpontevedra.com" class="link"
+      >escola@xadrezpontevedra.com</a
+    >.
+  </p>
+</section>
