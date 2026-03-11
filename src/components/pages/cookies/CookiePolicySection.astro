@@ -26,10 +26,10 @@ const browsers = [
 
   <p>
     En cumplimiento de la Ley 34/2002 (LSSI-CE) y la Directiva Europea
-    2009/136/CE, le informamos del uso de cookies en este sitio web, titularidad
+    2009/136/CE, te informamos del uso de cookies en este sitio web, titularidad
     de Escola Xadrez Pontevedra. Las cookies son pequeños archivos de texto que
-    se descargan en su dispositivo al navegar: son seguras, no pueden ejecutar
-    código ni acceder a su equipo, y sirven exclusivamente para recordar sus
+    se descargan en tu dispositivo al navegar: son seguras, no pueden ejecutar
+    código ni acceder a tu equipo, y sirven exclusivamente para recordar tus
     preferencias.
   </p>
 
@@ -37,12 +37,11 @@ const browsers = [
 
   <p>
     Este sitio web utiliza únicamente las cookies estrictamente necesarias para
-    su funcionamiento y las generadas por Google Maps cuando usted acepta su
-    uso.
+    su funcionamiento y las generadas por Google Maps cuando aceptas su uso.
   </p>
 
   <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
-    <div class="grid grid-cols-4 px-6 py-3 bg-blue-50 rounded-t-3xl">
+    <div class="hidden md:grid grid-cols-4 px-6 py-3 bg-blue-50 rounded-t-3xl">
       <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
         >Tipo</span
       >
@@ -56,46 +55,86 @@ const browsers = [
         >Finalidad</span
       >
     </div>
+
     <div
-      class="grid grid-cols-4 px-6 py-4 hover:bg-blue-50 transition-colors items-start"
+      class="flex flex-col md:grid md:grid-cols-4 px-6 py-4 gap-3 md:gap-0 hover:bg-blue-50 transition-colors md:items-start bg-blue-50 md:bg-transparent"
     >
       <span
         class="text-xs font-bold px-2 py-1 rounded-full bg-blue-100 text-blue-900 uppercase tracking-widest w-fit"
-        >Propia</span
       >
-      <span class="text-gray-600 text-sm font-mono">cookie_consent</span>
-      <span class="text-gray-600 text-sm">180 días</span>
-      <span class="text-gray-600 text-sm"
-        >Almacena la preferencia del usuario sobre el uso de cookies.</span
-      >
+        Propia
+      </span>
+      <div class="flex flex-col gap-0.5">
+        <span
+          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
+          >Nombre</span
+        >
+        <span class="text-gray-600 text-sm font-mono">cookie_consent</span>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <span
+          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
+          >Duración</span
+        >
+        <span class="text-gray-600 text-sm">180 días</span>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <span
+          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
+          >Finalidad</span
+        >
+        <span class="text-gray-600 text-sm"
+          >Almacena tu preferencia sobre el uso de cookies.</span
+        >
+      </div>
     </div>
+
     <div
-      class="grid grid-cols-4 px-6 py-4 hover:bg-blue-50 transition-colors items-start"
+      class="flex flex-col md:grid md:grid-cols-4 px-6 py-4 gap-3 md:gap-0 hover:bg-blue-50 transition-colors md:items-start"
     >
       <span
         class="text-xs font-bold px-2 py-1 rounded-full bg-gray-100 text-gray-600 uppercase tracking-widest w-fit"
-        >Terceros</span
       >
-      <span class="text-gray-600 text-sm font-mono">Google Maps</span>
-      <span class="text-gray-600 text-sm">Sesión</span>
-      <span class="text-gray-600 text-sm">
-        Necesarias para mostrar los mapas interactivos. Solo se activan si usted
-        acepta las cookies. Consulte la
-        <a
-          href="https://policies.google.com/privacy"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link">política de privacidad de Google</a
-        >.
+        Terceros
       </span>
+      <div class="flex flex-col gap-0.5">
+        <span
+          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
+          >Nombre</span
+        >
+        <span class="text-gray-600 text-sm font-mono">Google Maps</span>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <span
+          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
+          >Duración</span
+        >
+        <span class="text-gray-600 text-sm">Sesión</span>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <span
+          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
+          >Finalidad</span
+        >
+        <span class="text-gray-600 text-sm">
+          Necesarias para mostrar los mapas interactivos. Solo se activan si
+          aceptas las cookies. Consulta la
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link">política de privacidad de Google</a
+          >.
+        </span>
+      </div>
     </div>
   </div>
 
   <h3 class="text-2xl font-bold text-blue-900 mt-4">Gestión y bloqueo</h3>
 
   <p>
-    Puede retirar su consentimiento en cualquier momento haciendo clic en
-    "Gestionar cookies" en el pie de página. También puede configurar su
+    Puedes retirar tu consentimiento en cualquier momento haciendo clic en
+    "Gestionar cookies" en el pie de página. También puedes configurar tu
     navegador para bloquear o eliminar cookies, aunque esto puede impedir la
     visualización de los mapas interactivos:
   </p>
@@ -114,7 +153,7 @@ const browsers = [
 
   <p>
     Nos reservamos el derecho a actualizar esta política para adaptarla a
-    cambios legislativos o técnicos. Para cualquier consulta puede contactarnos
+    cambios legislativos o técnicos. Para cualquier consulta puedes contactarnos
     en <a href="mailto:escola@xadrezpontevedra.com" class="link"
       >escola@xadrezpontevedra.com</a
     >.
