@@ -1,3 +1,12 @@
+---
+const fees = [
+  { elo: "1900 - 1999", fee: "90€" },
+  { elo: "1700 - 1899", fee: "150€" },
+  { elo: "1500 - 1699", fee: "200€" },
+  { elo: "< 1500", fee: "250€" },
+];
+---
+
 <section id="inscripciones" class="flex flex-col gap-4 mb-12 text-gray-600">
   <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Inscripciones</h2>
 
@@ -59,37 +68,23 @@
     aplicarán las siguientes cuotas:
   </p>
 
-  <div class="overflow-hidden rounded-xl border border-blue-900">
-    <table class="min-w-full text-sm">
-      <thead class="bg-blue-900 text-gray-50">
-        <tr>
-          <th class="px-3 py-2 text-left">Tramo ELO FIDE</th>
-          <th class="px-3 py-2 text-left">Cuota</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          ><td class="px-3 py-2">1900 &dash; 1999</td><td class="px-3 py-2"
-            >90&euro;</td
-          ></tr
-        >
-        <tr
-          ><td class="px-3 py-2">1700 &dash; 1899</td><td class="px-3 py-2"
-            >150&euro;</td
-          ></tr
-        >
-        <tr
-          ><td class="px-3 py-2">1500 &dash; 1699</td><td class="px-3 py-2"
-            >200&euro;</td
-          ></tr
-        >
-        <tr
-          ><td class="px-3 py-2">&lt; 1500</td><td class="px-3 py-2"
-            >250&euro;</td
-          ></tr
-        >
-      </tbody>
-    </table>
+  <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+    <div class="grid grid-cols-2 px-6 py-3 bg-blue-50 rounded-t-3xl">
+      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
+        >Tramo ELO FIDE</span
+      >
+      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
+        >Cuota</span
+      >
+    </div>
+    {
+      fees.map(({ elo, fee }) => (
+        <div class="grid grid-cols-2 px-6 py-3 hover:bg-blue-50 transition-colors items-center">
+          <span class="text-gray-600 text-sm">{elo}</span>
+          <span class="text-blue-900 font-bold text-sm">{fee}</span>
+        </div>
+      ))
+    }
   </div>
 
   <p>
