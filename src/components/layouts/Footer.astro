@@ -13,6 +13,11 @@ const links = [
   { href: "/contacto", label: "Contacto" },
 ];
 
+const legalLinks = [
+  { href: "/privacidad", label: "Privacidad" },
+  { href: "/cookies", label: "Cookies" },
+];
+
 const socialLinks = {
   facebook: {
     href: "https://facebook.com/escola.pontevedra",
@@ -38,7 +43,7 @@ const socialLinks = {
 ---
 
 <footer class="border-t border-gray-200">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 py-12">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-12">
     <div class="flex flex-col gap-4">
       <h4 class="text-blue-900 font-bold text-sm uppercase tracking-widest">
         Navegación
@@ -46,6 +51,21 @@ const socialLinks = {
       <nav class="flex flex-col gap-2">
         {
           links.map((link) => (
+            <a href={link.href} class="link text-sm">
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <h4 class="text-blue-900 font-bold text-sm uppercase tracking-widest">
+        Legal
+      </h4>
+      <nav class="flex flex-col gap-2">
+        {
+          legalLinks.map((link) => (
             <a href={link.href} class="link text-sm">
               {link.label}
             </a>
