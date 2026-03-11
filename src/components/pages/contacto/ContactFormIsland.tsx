@@ -31,29 +31,41 @@ const ContactFormIsland: FunctionalComponent = () => {
 
   return (
     <form class="flex flex-col gap-4" onSubmit={sendEmail}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Tu nombre"
-        required
-        class="border border-gray-200 rounded-xl p-3 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
-      />
+      <div class="flex flex-col gap-2">
+        <label for="name" class="text-xs font-bold text-blue-900 uppercase tracking-widest ml-1">Nombre</label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Tu nombre"
+          required
+          class="border border-gray-200 rounded-xl p-3 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
 
-      <input
-        type="text"
-        name="subject"
-        placeholder="Asunto"
-        required
-        class="border border-gray-200 rounded-xl p-3 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
-      />
+      <div class="flex flex-col gap-2">
+        <label for="subject" class="text-xs font-bold text-blue-900 uppercase tracking-widest ml-1">Asunto</label>
+        <input
+          id="subject"
+          type="text"
+          name="subject"
+          placeholder="Asunto"
+          required
+          class="border border-gray-200 rounded-xl p-3 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
 
-      <textarea
-        name="message"
-        placeholder="Tu mensaje"
-        rows={9}
-        required
-        class="border border-gray-200 rounded-xl p-3 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
-      />
+      <div class="flex flex-col gap-2">
+        <label for="message" class="text-xs font-bold text-blue-900 uppercase tracking-widest ml-1">Mensaje</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Tu mensaje"
+          rows={9}
+          required
+          class="border border-gray-200 rounded-xl p-3 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
 
       <button type="submit" class="button button-primary w-fit cursor-pointer">
         Enviar mensaje
