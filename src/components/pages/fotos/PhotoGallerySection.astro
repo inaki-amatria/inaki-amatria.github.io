@@ -1,0 +1,93 @@
+---
+import { Image } from "astro:assets";
+
+import XIIIEditionAlbumCover from "@assets/images/XIIIEditionAlbumCover.webp";
+import XIIEditionAlbumCover from "@assets/images/XIIEditionAlbumCover.webp";
+import XIEditionAlbumCover from "@assets/images/XIEditionAlbumCover.webp";
+
+const albums = [
+  {
+    year: 2025,
+    edition: "XIII",
+    title: "XIII Torneo Internacional Ciudad de Pontevedra",
+    url: "https://photos.app.goo.gl/7erxMmp49NkAwm8k7",
+    cover: XIIIEditionAlbumCover,
+    photoCount: 795,
+  },
+  {
+    year: 2024,
+    edition: "XII",
+    title: "XII Torneo Internacional Ciudad de Pontevedra",
+    url: "https://photos.app.goo.gl/zTQrmgKj7ZBq2pnA9",
+    cover: XIIEditionAlbumCover,
+    photoCount: 403,
+  },
+  {
+    year: 2023,
+    edition: "XI",
+    title: "XI Torneo Internacional Ciudad de Pontevedra",
+    url: "https://photos.app.goo.gl/kFtfk1wscbso7pE78",
+    cover: XIEditionAlbumCover,
+    photoCount: 975,
+  },
+];
+---
+
+<section class="flex flex-col gap-8 mb-12">
+  <div class="flex flex-col gap-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900">
+      Galería de fotos
+    </h2>
+    <p class="text-gray-600">
+      Revive los mejores momentos de las ediciones anteriores del torneo.
+    </p>
+  </div>
+
+  {
+    albums.map(({ year, edition, title, url, cover, photoCount }) => (
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        {/* Imagen de portada */}
+        <div class="w-full md:w-3/5 flex-shrink-0">
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <div class="rounded-3xl overflow-hidden shadow-lg aspect-video bg-blue-50 flex items-center justify-center group">
+              {
+                <Image
+                  src={cover}
+                  alt={title}
+                  class="w-full h-full object-cover"
+                  quality="high"
+                  loading="eager"
+                />
+              }
+            </div>
+          </a>
+        </div>
+
+        {/* Texto */}
+        <div class="flex flex-col gap-4">
+          <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-100 text-blue-900 uppercase tracking-widest w-fit">
+            {year}
+          </span>
+
+          <h3 class="text-2xl md:text-3xl font-bold text-blue-900 leading-tight">
+            <span class="font-serif italic">{edition}</span> Torneo
+            Internacional
+            <br />
+            Ciudad de Pontevedra
+          </h3>
+
+          {<p class="text-gray-600 text-sm">{photoCount} fotos</p>}
+
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-primary w-fit"
+          >
+            Ver álbum
+          </a>
+        </div>
+      </div>
+    ))
+  }
+</section>
