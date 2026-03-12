@@ -2,9 +2,9 @@
 import ContactFormIsland from "./ContactFormIsland.tsx";
 ---
 
-<section class="mb-12">
-  <div class="flex flex-col gap-4 mb-8">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-900">Contacto</h2>
+<section class="flex flex-col gap-8 mb-12">
+  <div class="flex flex-col gap-4">
+    <h2 class="section-heading">Contacto</h2>
     <p class="text-gray-600">
       ¿Tienes alguna duda sobre el torneo? Elige la forma que prefieras para
       comunicarte con nosotros.
@@ -13,13 +13,8 @@ import ContactFormIsland from "./ContactFormIsland.tsx";
 
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
     <div class="flex flex-col gap-4">
-      <div
-        class="rounded-3xl bg-white p-6 flex flex-col gap-4 justify-center shadow-lg"
-      >
-        <span
-          class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest bg-blue-100 text-blue-900 w-fit"
-          >Llámanos</span
-        >
+      <div class="card flex flex-col justify-center gap-4 p-6">
+        <span class="pill-blue w-fit">Llámanos</span>
         <h3 class="text-blue-900 text-3xl font-bold italic font-serif">
           650 645 318
         </h3>
@@ -33,9 +28,7 @@ import ContactFormIsland from "./ContactFormIsland.tsx";
         </div>
       </div>
 
-      <div
-        class="rounded-3xl bg-white p-6 flex flex-col gap-4 justify-center shadow-lg"
-      >
+      <div class="card flex flex-col justify-center gap-4 p-6">
         <h3 class="text-3xl font-bold text-blue-900 font-serif italic">
           Visítanos
         </h3>
@@ -56,15 +49,11 @@ import ContactFormIsland from "./ContactFormIsland.tsx";
           </p>
         </div>
 
-        <a href="#encuentranos" class="button button-primary w-fit mt-2"
-          >Ver mapa</a
-        >
+        <a href="#encuentranos" class="button-primary w-fit mt-2">Ver mapa</a>
       </div>
     </div>
 
-    <div
-      class="lg:col-span-2 rounded-3xl bg-white p-6 flex flex-col gap-4 justify-center shadow-lg"
-    >
+    <div class="lg:col-span-2 card flex flex-col justify-center gap-4 p-6">
       <h3 class="text-3xl font-bold text-blue-900">Envíanos un mensaje</h3>
       <ContactFormIsland client:load />
     </div>

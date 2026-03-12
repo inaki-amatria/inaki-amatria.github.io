@@ -48,9 +48,7 @@ const socialLinks = {
 <footer class="border-t border-gray-200">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 py-12">
     <div class="flex flex-col gap-4">
-      <h4 class="text-blue-900 font-bold text-sm uppercase tracking-widest">
-        Navegación
-      </h4>
+      <h4 class="label-sm">Navegación</h4>
       <nav class="flex flex-col gap-2">
         {
           links.map((link) => (
@@ -63,9 +61,7 @@ const socialLinks = {
     </div>
 
     <div class="flex flex-col gap-4">
-      <h4 class="text-blue-900 font-bold text-sm uppercase tracking-widest">
-        Legal
-      </h4>
+      <h4 class="label-sm">Legal</h4>
       <nav class="flex flex-col gap-2">
         <ManageCookiesIsland class="link text-sm" client:load />
         {
@@ -79,9 +75,7 @@ const socialLinks = {
     </div>
 
     <div class="flex flex-col gap-4">
-      <h4 class="text-blue-900 font-bold text-sm uppercase tracking-widest">
-        Síguenos
-      </h4>
+      <h4 class="label-sm">Síguenos</h4>
       <div class="flex flex-wrap gap-4">
         {
           Object.values(socialLinks).map(({ href, label, Icon }) => (

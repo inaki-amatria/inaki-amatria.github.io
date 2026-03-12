@@ -1,7 +1,7 @@
-<section class="mb-12">
-  <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-8">Grupo B</h2>
+<section class="flex flex-col gap-8 mb-12">
+  <h2 class="section-heading">Grupo B</h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div
       class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-900 to-blue-950 p-6 flex flex-col gap-2 justify-end shadow-lg min-h-48"
     >
@@ -21,17 +21,14 @@
     </div>
 
     <div
-      class="relative overflow-hidden rounded-3xl bg-white p-6 flex flex-col gap-2 justify-end shadow-lg min-h-48"
+      class="relative overflow-hidden card p-6 flex flex-col gap-2 justify-end min-h-48"
     >
       <div
         class="absolute top-4 right-4 text-blue-900/5 font-serif italic font-bold text-8xl leading-none select-none"
       >
         2
       </div>
-      <span
-        class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest bg-blue-100 text-blue-900 w-fit"
-        >2.do clasificado</span
-      >
+      <span class="pill-blue w-fit">2.do clasificado</span>
       <span
         class="text-blue-900 text-5xl font-bold font-serif italic leading-none"
         >700&euro;</span
@@ -40,17 +37,14 @@
     </div>
 
     <div
-      class="relative overflow-hidden rounded-3xl bg-white p-6 flex flex-col gap-2 justify-end shadow-lg min-h-48"
+      class="relative overflow-hidden card p-6 flex flex-col gap-2 justify-end min-h-48"
     >
       <div
         class="absolute top-4 right-4 text-blue-900/5 font-serif italic font-bold text-8xl leading-none select-none"
       >
         3
       </div>
-      <span
-        class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest bg-blue-100 text-blue-900 w-fit"
-        >3.er clasificado</span
-      >
+      <span class="pill-blue w-fit">3.er clasificado</span>
       <span
         class="text-blue-900 text-5xl font-bold font-serif italic leading-none"
         >500&euro;</span
@@ -59,7 +53,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
     {
       [
         { pos: "4.º", prize: "400€" },
@@ -80,7 +74,7 @@
     }
   </div>
 
-  <div class="flex items-center gap-4 mb-8">
+  <div class="flex items-center gap-4">
     <div class="h-px bg-gray-200 flex-1"></div>
     <span class="text-xs font-bold uppercase tracking-widest text-gray-400"
       >Premios especiales</span

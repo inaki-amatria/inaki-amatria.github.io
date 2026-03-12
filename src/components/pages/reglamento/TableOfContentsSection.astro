@@ -25,7 +25,7 @@ const { sections } = Astro.props;
           <a
             href={`#${section.id}`}
             data-target={section.id}
-            class="toc-link block hover:bg-blue-50 text-gray-600 hover:text-blue-900 text-sm px-4 py-3"
+            class="toc-link block hover:bg-blue-50 text-gray-600 hover:text-blue-900 text-sm px-4 py-3 transition-colors duration-300"
           >
             {section.title}
           </a>
@@ -45,7 +45,7 @@ const { sections } = Astro.props;
           <a
             href={`#${section.id}`}
             data-target={section.id}
-            class="toc-link border-l border-gray-200 text-gray-600 hover:border-blue-900 hover:text-blue-900 text-sm pl-4 pt-2 pb-2"
+            class="toc-link border-l border-gray-200 text-gray-600 hover:border-blue-900 hover:text-blue-900 text-sm pl-4 pt-2 pb-2 transition-colors duration-300"
           >
             {section.title}
           </a>

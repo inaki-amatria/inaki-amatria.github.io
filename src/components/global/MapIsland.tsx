@@ -21,7 +21,7 @@ export default function MapIsland({ src, class: className = "", iframeClass = "w
   }, []);
 
   return (
-    <div class={`overflow-hidden rounded-3xl shadow-lg ${className}`}>
+    <div class={`overflow-hidden bg-blue-50 rounded-3xl shadow-lg ${className}`}>
       {consent === "accepted" ? (
         <iframe
           src={src}

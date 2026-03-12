@@ -1,28 +1,26 @@
 ---
 const browsers = [
   {
-    label: "Google Chrome.",
+    label: "Google Chrome",
     href: "https://support.google.com/chrome/answer/95647",
   },
   {
-    label: "Microsoft Edge.",
+    label: "Microsoft Edge",
     href: "https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09",
   },
   {
-    label: "Mozilla Firefox.",
+    label: "Mozilla Firefox",
     href: "https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias",
   },
   {
-    label: "Safari.",
+    label: "Safari",
     href: "https://support.apple.com/es-es/guide/safari/sfri11471/mac",
   },
 ];
 ---
 
-<section class="flex flex-col gap-4 mb-12 text-gray-600">
-  <h2 class="text-3xl md:text-4xl font-bold text-blue-900">
-    Política de cookies
-  </h2>
+<section class="content-section">
+  <h2 class="section-heading">Política de cookies</h2>
 
   <p>
     En cumplimiento de la Ley 34/2002 (LSSI-CE) y la Directiva Europea
@@ -33,104 +31,69 @@ const browsers = [
     preferencias.
   </p>
 
-  <h3 class="text-2xl font-bold text-blue-900 mt-4">Cookies que utilizamos</h3>
+  <h3 class="section-subheading">Cookies que utilizamos</h3>
 
   <p>
     Este sitio web utiliza únicamente las cookies estrictamente necesarias para
     su funcionamiento y las generadas por Google Maps cuando aceptas su uso.
   </p>
-
-  <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
-    <div class="hidden md:grid grid-cols-4 px-6 py-3 bg-blue-50 rounded-t-3xl">
-      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
-        >Tipo</span
-      >
-      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
-        >Nombre</span
-      >
-      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
-        >Duración</span
-      >
-      <span class="text-blue-900 font-bold text-xs uppercase tracking-widest"
-        >Finalidad</span
-      >
+  <div class="card overflow-hidden">
+    <div class="hidden md:grid grid-cols-4 table-header">
+      <span class="table-header-cell">Tipo</span>
+      <span class="table-header-cell">Nombre</span>
+      <span class="table-header-cell">Duración</span>
+      <span class="table-header-cell">Finalidad</span>
     </div>
 
     <div
-      class="flex flex-col md:grid md:grid-cols-4 px-6 py-4 gap-3 md:gap-0 hover:bg-blue-50 transition-colors md:items-start bg-blue-50 md:bg-transparent"
+      class="flex flex-col md:grid md:grid-cols-4 px-6 py-4 gap-3 md:gap-0 hover:bg-blue-50 transition-colors duration-300 md:items-start bg-blue-50 md:bg-transparent"
     >
-      <span
-        class="text-xs font-bold px-2 py-1 rounded-full bg-blue-100 text-blue-900 uppercase tracking-widest w-fit"
-      >
-        Propia
-      </span>
+      <span class="pill-blue">Propia</span>
       <div class="flex flex-col gap-0.5">
-        <span
-          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
-          >Nombre</span
-        >
-        <span class="text-gray-600 text-sm font-mono">cookie_consent</span>
+        <span class="label md:hidden text-gray-400">Nombre</span>
+        <span class="table-cell font-mono">cookie_consent</span>
       </div>
       <div class="flex flex-col gap-0.5">
-        <span
-          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
-          >Duración</span
-        >
-        <span class="text-gray-600 text-sm">180 días</span>
+        <span class="label md:hidden text-gray-400">Duración</span>
+        <span class="table-cell">180 días</span>
       </div>
       <div class="flex flex-col gap-0.5">
-        <span
-          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
-          >Finalidad</span
-        >
-        <span class="text-gray-600 text-sm"
+        <span class="label md:hidden text-gray-400">Finalidad</span>
+        <span class="table-cell"
           >Almacena tu preferencia sobre el uso de cookies.</span
         >
       </div>
     </div>
 
     <div
-      class="flex flex-col md:grid md:grid-cols-4 px-6 py-4 gap-3 md:gap-0 hover:bg-blue-50 transition-colors md:items-start"
+      class="flex flex-col md:grid md:grid-cols-4 px-6 py-4 gap-3 md:gap-0 hover:bg-blue-50 transition-colors duration-300 md:items-start"
     >
-      <span
-        class="text-xs font-bold px-2 py-1 rounded-full bg-gray-100 text-gray-600 uppercase tracking-widest w-fit"
-      >
-        Terceros
-      </span>
+      <span class="pill-gray">Terceros</span>
       <div class="flex flex-col gap-0.5">
-        <span
-          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
-          >Nombre</span
-        >
-        <span class="text-gray-600 text-sm font-mono">Google Maps</span>
+        <span class="label md:hidden text-gray-400">Nombre</span>
+        <span class="table-cell font-mono">Google Maps</span>
       </div>
       <div class="flex flex-col gap-0.5">
-        <span
-          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
-          >Duración</span
-        >
-        <span class="text-gray-600 text-sm">Sesión</span>
+        <span class="label md:hidden text-gray-400">Duración</span>
+        <span class="table-cell">Sesión</span>
       </div>
       <div class="flex flex-col gap-0.5">
-        <span
-          class="text-xs font-bold text-gray-400 uppercase tracking-widest md:hidden"
-          >Finalidad</span
-        >
-        <span class="text-gray-600 text-sm">
+        <span class="label md:hidden text-gray-400">Finalidad</span>
+        <span class="table-cell">
           Necesarias para mostrar los mapas interactivos. Solo se activan si
           aceptas las cookies. Consulta la
           <a
             href="https://policies.google.com/privacy"
             target="_blank"
             rel="noopener noreferrer"
-            class="link">política de privacidad de Google</a
+            class="inline-link">política de privacidad de Google</a
           >.
         </span>
       </div>
     </div>
   </div>
 
-  <h3 class="text-2xl font-bold text-blue-900 mt-4">Gestión y bloqueo</h3>
+  <h3 class="section-subheading">Gestión y bloqueo</h3>
 
   <p>
     Puedes retirar tu consentimiento en cualquier momento haciendo clic en
@@ -141,20 +104,19 @@ const browsers = [
 
   <ul class="list-disc ml-12 space-y-2">
     {
-      browsers.map(({ label, href }) => (
+      browsers.map(({ label, href }) =>
+        /* prettier-ignore */
         <li>
-          <a href={href} target="_blank" rel="noopener noreferrer" class="link">
-            {label}
-          </a>
-        </li>
-      ))
+          <a href={href} target="_blank" rel="noopener noreferrer" class="inline-link">{label}</a>.
+        </li>,
+      )
     }
   </ul>
 
   <p>
     Nos reservamos el derecho a actualizar esta política para adaptarla a
     cambios legislativos o técnicos. Para cualquier consulta puedes contactarnos
-    en <a href="mailto:escola@xadrezpontevedra.com" class="link"
+    en <a href="mailto:escola@xadrezpontevedra.com" class="inline-link"
       >escola@xadrezpontevedra.com</a
     >.
   </p>

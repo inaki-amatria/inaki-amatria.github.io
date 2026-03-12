@@ -105,11 +105,11 @@ export default function LiveBoardIsland({
   return (
     <div
       class={[
-        "flex flex-col bg-white rounded-3xl shadow-lg gap-4 p-4",
+        "card flex flex-col gap-4 p-4",
         mode === "skeleton" && "animate-pulse",
       ].join(" ")}
     >
-      <span class="text-sm font-bold uppercase tracking-widest text-blue-900">
+      <span class="label-sm">
         Mesa {index + 1}
       </span>
 
@@ -136,7 +136,7 @@ export default function LiveBoardIsland({
         {mode === "live" && (
           <div
             class={[
-              "absolute inset-0 bg-blue-900/20 flex items-center justify-center z-20 transition-opacity duration-500",
+              "absolute inset-0 bg-blue-900/20 flex items-center justify-center z-20 transition-opacity duration-300",
               finished ? "opacity-100" : "opacity-0 pointer-events-none",
             ].join(" ")}
           >

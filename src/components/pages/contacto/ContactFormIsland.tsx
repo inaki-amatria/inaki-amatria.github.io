@@ -32,7 +32,7 @@ const ContactFormIsland: FunctionalComponent = () => {
   return (
     <form class="flex flex-col gap-4" onSubmit={sendEmail}>
       <div class="flex flex-col gap-2">
-        <label for="name" class="text-xs font-bold text-blue-900 uppercase tracking-widest ml-1">Nombre</label>
+        <label for="name" class="label ml-1">Nombre</label>
         <input
           id="name"
           type="text"
@@ -44,7 +44,7 @@ const ContactFormIsland: FunctionalComponent = () => {
       </div>
 
       <div class="flex flex-col gap-2">
-        <label for="subject" class="text-xs font-bold text-blue-900 uppercase tracking-widest ml-1">Asunto</label>
+        <label for="subject" class="label ml-1">Asunto</label>
         <input
           id="subject"
           type="text"
@@ -56,7 +56,7 @@ const ContactFormIsland: FunctionalComponent = () => {
       </div>
 
       <div class="flex flex-col gap-2">
-        <label for="message" class="text-xs font-bold text-blue-900 uppercase tracking-widest ml-1">Mensaje</label>
+        <label for="message" class="label ml-1">Mensaje</label>
         <textarea
           id="message"
           name="message"
@@ -67,7 +67,7 @@ const ContactFormIsland: FunctionalComponent = () => {
         />
       </div>
 
-      <button type="submit" class="button button-primary w-fit cursor-pointer">
+      <button type="submit" class="button-primary w-fit">
         Enviar mensaje
       </button>
 

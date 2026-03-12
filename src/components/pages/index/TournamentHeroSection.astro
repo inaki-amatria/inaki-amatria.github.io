@@ -4,9 +4,7 @@ import { Image } from "astro:assets";
 import Players from "@assets/images/Players.webp";
 ---
 
-<section
-  class="relative overflow-hidden rounded-3xl bg-gray-200 shadow-lg mb-12"
->
+<section class="relative overflow-hidden card mb-12">
   <Image
     src={Players}
     alt="Participantes del XIII Torneo Internacional Ciudad de Pontevedra"
@@ -20,7 +18,7 @@ import Players from "@assets/images/Players.webp";
   >
     <div class="flex flex-col gap-4 max-w-2xl">
       <div
-        class="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 w-fit"
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 w-fit"
       >
         <span class="relative flex h-2 w-2">
           <span
@@ -29,7 +27,7 @@ import Players from "@assets/images/Players.webp";
           <span class="relative inline-flex rounded-full h-2 w-2 bg-white"
           ></span>
         </span>
-        <span class="text-white text-sm font-bold uppercase tracking-widest">
+        <span class="text-white text-xs font-bold uppercase tracking-widest">
           24 &mdash; 30 de Julio, 2026
         </span>
       </div>
@@ -51,10 +49,10 @@ import Players from "@assets/images/Players.webp";
       </p>
 
       <div class="flex flex-wrap gap-4 mt-2">
-        <a href="/reglamento#inscripciones" class="button button-primary"
+        <a href="/reglamento#inscripciones" class="button-primary"
           >Inscribirme ahora</a
         >
-        <a href="/reglamento" class="button button-secondary">Ver reglamento</a>
+        <a href="/reglamento" class="button-secondary">Ver reglamento</a>
       </div>
     </div>
   </div>
