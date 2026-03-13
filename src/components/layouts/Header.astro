@@ -1,42 +1,7 @@
 ---
-import Pawn from "@assets/icons/Pawn.svg";
-
-const links = [
-  { href: "/reglamento", label: "Reglamento" },
-  { href: "/premios", label: "Premios" },
-  { href: "/partidas", label: "Partidas" },
-  { href: "/alojamiento", label: "Alojamiento" },
-  { href: "/fotos", label: "Fotos" },
-];
+import NavbarIsland from "./NavbarIsland.tsx";
 ---
 
-<nav
-  class="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8 pt-6 pb-12"
->
-  <div class="flex justify-between items-center w-full md:w-auto">
-    <div class="flex items-center whitespace-nowrap gap-2">
-      <Pawn class="w-12 h-12 fill-blue-900 flex-none" />
-
-      <a href="/">
-        <span class="block text-blue-900"> Torneo Internacional </span>
-        <span class="block label"> Ciudad de Pontevedra </span>
-      </a>
-    </div>
-
-    <a href="/contacto" class="button-primary md:hidden">Contacto</a>
-  </div>
-
-  <div
-    class="flex overflow-x-auto no-scrollbar whitespace-nowrap w-full md:w-auto gap-8"
-  >
-    {
-      links.map((link) => (
-        <a href={link.href} class="link">
-          {link.label}
-        </a>
-      ))
-    }
-  </div>
-
-  <a href="/contacto" class="button-primary hidden md:block">Contacto</a>
-</nav>
+<header>
+  <NavbarIsland client:load />
+</header>
