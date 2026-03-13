@@ -20,7 +20,7 @@ function sleep(ms: number) {
 
 async function fetchPlayers(group: "masters" | "amateur"): Promise<Player[]> {
   const targetUrl = encodeURIComponent(URLS[group]);
-  const res = await fetch(`https://corsproxy.io/?${targetUrl}`);
+  const res = await fetch(`https://green-cloud-e02f.amatriainaki.workers.dev/?url=${targetUrl}`);
   const html = await res.text();
 
   await sleep(300 + Math.random() * 400);
