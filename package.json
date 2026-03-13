@@ -17,6 +17,7 @@
     "@lichess-org/chessground": "^10.0.2",
     "@tailwindcss/vite": "^4.2.0",
     "astro": "^6.0.4",
+    "lucide-astro": "^0.556.0",
     "preact": "^10.28.4",
     "tailwindcss": "^4.2.0"
   }
