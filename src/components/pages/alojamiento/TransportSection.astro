@@ -1,71 +1,57 @@
+---
+const transports = [
+  {
+    icon: "🚍",
+    name: "Autobús",
+    description: "Conexiones directas desde diferentes puntos de Galicia.",
+    url: "https://www.autobusespontevedra.com",
+    label: "autobusespontevedra.com",
+  },
+  {
+    icon: "🚆",
+    name: "Tren",
+    description:
+      "Estación de Pontevedra con servicios regionales y nacionales.",
+    url: "https://www.renfe.com",
+    label: "renfe.com",
+  },
+  {
+    icon: "🚘",
+    name: "Automóvil",
+    description:
+      "Aparcamientos gratuitos disponibles en el entorno del Pazo da Cultura de Pontevedra.",
+    url: "https://maps.app.goo.gl/amBQQKXyUR1kasvP8",
+    label: "google.com/maps",
+  },
+  {
+    icon: "🚖",
+    name: "Taxi",
+    description: "Servicio 24 horas en la ciudad de Pontevedra.",
+    url: "https://radiotaxipontevedra.es",
+    label: "radiotaxipontevedra.es",
+  },
+];
+---
+
 <section class="flex flex-col gap-8 mb-12">
   <h2 class="section-heading">Transporte</h2>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-    <div class="card p-6 flex flex-col gap-4">
-      <span class="label"> 🚍 Autobús </span>
-
-      <p class="text-gray-600 text-sm">
-        Conexiones directas desde diferentes puntos de Galicia.
-      </p>
-
-      <a
-        href="https://www.autobusespontevedra.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-link text-sm"
-      >
-        autobusespontevedra.com
-      </a>
-    </div>
-
-    <div class="card p-6 flex flex-col gap-4">
-      <span class="label"> 🚆 Tren </span>
-
-      <p class="text-gray-600 text-sm">
-        Estación de Pontevedra con servicios regionales y nacionales.
-      </p>
-
-      <a
-        href="https://www.renfe.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-link text-sm"
-      >
-        renfe.com
-      </a>
-    </div>
-
-    <div class="card p-6 flex flex-col gap-4">
-      <span class="label"> 🚘 Automóvil </span>
-      <p class="text-gray-600 text-sm">
-        Aparcamientos gratuitos disponibles en el entorno del Pazo da Cultura de
-        Pontevedra.
-      </p>
-
-      <a
-        href="https://maps.app.goo.gl/amBQQKXyUR1kasvP8"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-link text-sm"
-      >
-        google.com/maps
-      </a>
-    </div>
-
-    <div class="card p-6 flex flex-col gap-4">
-      <span class="label"> 🚖 Taxi </span>
-      <p class="text-gray-600 text-sm">
-        Servicio 24 horas en la ciudad de Pontevedra.
-      </p>
-      <a
-        href="https://radiotaxipontevedra.es"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-link text-sm"
-      >
-        radiotaxipontevedra.es
-      </a>
-    </div>
+    {
+      transports.map(({ icon, name, description, url, label }) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card p-6 flex flex-col gap-4 group"
+        >
+          <span class="label">
+            {icon} {name}
+          </span>
+          <p class="text-gray-600 text-sm">{description}</p>
+          <span class="link text-sm mt-auto">{label} &rightarrow;</span>
+        </a>
+      ))
+    }
   </div>
 </section>
