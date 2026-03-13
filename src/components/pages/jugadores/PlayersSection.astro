@@ -1,0 +1,54 @@
+---
+import PlayersIsland from "./PlayersIsland.tsx";
+import { Users, Trophy } from "lucide-astro";
+
+const platforms = [
+  {
+    name: "Másters",
+    url: "https://info64.org/xiv-torneo-internacional-cidade-de-pontevedra-masters",
+    description: "Clasificación y resultados del Grupo A.",
+    Icon: Trophy,
+  },
+  {
+    name: "Amateur",
+    url: "https://info64.org/xiv-torneo-internacional-cidade-de-pontevedra-amateur",
+    description: "Clasificación y resultados del Grupo B.",
+    Icon: Users,
+  },
+];
+---
+
+<section class="flex flex-col gap-8 mb-12">
+  <div class="flex flex-col gap-4">
+    <h2 class="section-heading">Jugadores inscritos</h2>
+    <p class="text-gray-600">
+      Consulta la lista de participantes inscritos en el torneo.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {
+      platforms.map(({ name, url, description, Icon }) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card p-6 flex flex-col gap-4"
+        >
+          <div class="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center">
+            <Icon class="w-5 h-5 text-blue-900" />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <span class="label">{name}</span>
+            <p class="text-gray-600 text-sm">{description}</p>
+          </div>
+
+          <span class="link text-sm mt-auto">Ver clasificación →</span>
+        </a>
+      ))
+    }
+  </div>
+
+  <PlayersIsland client:load />
+</section>
