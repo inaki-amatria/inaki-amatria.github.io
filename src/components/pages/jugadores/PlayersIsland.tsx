@@ -1,5 +1,7 @@
 import { useState, useEffect } from "preact/hooks";
 
+const PROXY = "https://green-cloud-e02f.amatriainaki.workers.dev";
+
 const URLS = {
   masters: "https://chess-results.com/tnr1360196.aspx?lan=0&art=0&turdet=YES&flag=30&SNode=S0",
   amateur: "https://chess-results.com/tnr1360195.aspx?lan=0&art=0&turdet=YES&flag=30&SNode=S0",
@@ -19,38 +21,37 @@ function sleep(ms: number) {
 }
 
 async function fetchPlayers(group: "masters" | "amateur"): Promise<Player[]> {
-  const targetUrl = encodeURIComponent(URLS[group]);
-  const res = await fetch(`https://green-cloud-e02f.amatriainaki.workers.dev/?url=${targetUrl}`);
+  const res = await fetch(`${PROXY}/?url=${encodeURIComponent(URLS[group])}`);
   const html = await res.text();
 
   await sleep(300 + Math.random() * 400);
 
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
-
+  const doc = new DOMParser().parseFromString(html, "text/html");
   const table = doc.querySelector("table.CRs1");
   if (!table) {
     return [];
   }
 
-  const rows = Array.from(table.querySelectorAll("tr")).slice(1); // skip header
-
-  return rows
-    .map((row) => {
+  return Array.from(table.querySelectorAll("tr"))
+    .slice(1)
+    .flatMap((row) => {
       const cells = Array.from(row.querySelectorAll("td"));
       if (cells.length < 7) {
-        return null;
+        return [];
       }
-      return {
+      const name = cells[3]?.textContent?.trim() ?? "";
+      if (!name) {
+        return [];
+      }
+      return [{
         rank: cells[0]?.textContent?.trim() ?? "",
         title: cells[2]?.textContent?.trim() ?? "",
-        name: cells[3]?.textContent?.trim() ?? "",
+        name,
         fideId: cells[4]?.textContent?.trim() ?? "",
         fed: cells[5]?.textContent?.trim() ?? "",
         elo: cells[6]?.textContent?.trim() ?? "",
-      };
-    })
-    .filter((p): p is Player => p !== null && p.name !== "");
+      }];
+    });
 }
 
 export default function PlayersIsland() {
@@ -62,38 +63,30 @@ export default function PlayersIsland() {
   useEffect(() => {
     setLoading(true);
     setError(false);
-    fetchPlayers(group)
-      .then((data) => {
-        setPlayers(data);
-        setLoading(false);
-      })
-      .catch(() => {
+
+    (async () => {
+      try {
+        setPlayers(await fetchPlayers(group));
+      } catch {
         setError(true);
+      } finally {
         setLoading(false);
-      });
+      }
+    })();
   }, [group]);
 
   return (
     <div class="flex flex-col gap-4">
-      {/* Selector de grupo */}
       <div class="flex gap-4">
-        <button
-          onClick={() => setGroup("masters")}
-          class={`cursor-pointer ${group === "masters" ? "button-primary" : "button-secondary"}`}
-        >
+        <button onClick={() => setGroup("masters")} class={`cursor-pointer ${group === "masters" ? "button-primary" : "button-secondary"}`}>
           Grupo A
         </button>
-        <button
-          onClick={() => setGroup("amateur")}
-          class={`cursor-pointer ${group === "amateur" ? "button-primary" : "button-secondary"}`}
-        >
+        <button onClick={() => setGroup("amateur")} class={`cursor-pointer ${group === "amateur" ? "button-primary" : "button-secondary"}`}>
           Grupo B
         </button>
       </div>
 
-      {/* Tabla */}
       <div class="card overflow-hidden">
-        {/* Cabecera — solo desktop */}
         <div class="hidden sm:grid grid-cols-[3rem_4rem_1fr_5rem_4rem] table-header">
           <span class="table-header-cell">Nº</span>
           <span class="table-header-cell">Tít.</span>
