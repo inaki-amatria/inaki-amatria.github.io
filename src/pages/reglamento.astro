@@ -13,6 +13,7 @@ import RegistrationSection from "@components/pages/reglamento/RegistrationSectio
 import TableOfContentsSection from "@components/pages/reglamento/TableOfContentsSection.astro";
 import TieBreaksSection from "@components/pages/reglamento/TieBreaksSection.astro";
 import TimeControlSection from "@components/pages/reglamento/TimeControlSection.astro";
+import TitleSection from "@components/pages/reglamento/TitleSection.astro";
 
 const sections = [
   { id: "informacion-general", title: "Información general" },
@@ -33,6 +34,7 @@ const sections = [
 ---
 
 <Layout>
+  <TitleSection />
   <TableOfContentsSection sections={sections}>
     <GeneralInformationSection />
     <CompetitionSystemSection />
