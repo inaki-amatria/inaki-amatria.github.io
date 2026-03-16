@@ -10,8 +10,8 @@ export default function ManageCookiesIsland({ class: className = "" }: Props) {
   }
 
   return (
-    <a href="#" onClick={resetConsent} class={`${className}`}>
+    <span onClick={resetConsent} class={`${className} cursor-pointer`}>
       Gestionar cookies
-    </a>
+    </span>
   );
 }
