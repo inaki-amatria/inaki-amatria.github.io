@@ -27,6 +27,7 @@ export default function MapIsland({ src, class: className = "", iframeClass = "w
           src={src}
           class={iframeClass}
           style="border:0;"
+          title="Mapa de Google Maps"
           allowFullScreen
           loading="eager"
           referrerPolicy="no-referrer-when-downgrade"
