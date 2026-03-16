@@ -29,7 +29,7 @@ export default function MapIsland({ src, class: className = "", iframeClass = "w
           style="border:0;"
           title="Mapa de Google Maps"
           allowFullScreen
-          loading="eager"
+          loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
       ) : (
