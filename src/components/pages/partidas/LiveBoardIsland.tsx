@@ -160,14 +160,22 @@ export default function LiveBoardIsland({
         </span>
       </div>
 
-      <a
-        class="link text-sm self-end"
-        href={mode === "skeleton" ? "#" : `${round.url}/${game.id}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Ver en Lichess
-      </a>
+      {mode === "skeleton" ? (
+        <span class="link text-sm self-end cursor-pointer">
+          Ver en Lichess
+        </span>
+      ) : (
+        <a
+          class="link text-sm self-end"
+          href={`${round.url}/${game.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ver en Lichess
+        </a>
+      )
+      }
+
     </div>
   );
 }
