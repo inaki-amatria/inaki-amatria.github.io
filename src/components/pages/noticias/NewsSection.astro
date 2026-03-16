@@ -65,6 +65,8 @@ const formatter = new Intl.DateTimeFormat("es-ES", {
                 src={featured.cover}
                 alt={featured.coverAlt ?? featured.title}
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-500"
+                quality="high"
+                loading="eager"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
             </div>
@@ -110,6 +112,8 @@ const formatter = new Intl.DateTimeFormat("es-ES", {
                 src={noticia.cover}
                 alt={noticia.coverAlt ?? noticia.title}
                 class="absolute inset-0 w-full h-full object-cover"
+                quality="high"
+                loading="eager"
               />
             </div>
           ) : (
