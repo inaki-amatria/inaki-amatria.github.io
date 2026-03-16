@@ -1,0 +1,101 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import { Image } from "astro:assets";
+
+import XIIIEditionAlbumCover from "@assets/images/XIIIEditionAlbumCover.webp";
+
+export const frontmatter = {
+  title:
+    "Se abren las inscripciones del XIV Torneo Internacional Ciudad de Pontevedra",
+  date: new Date("2026-03-15"),
+  cover: XIIIEditionAlbumCover,
+  excerpt:
+    "Ya están abiertas las inscripciones para la decimocuarta edición del torneo internacional más importante de Galicia, con 13.000€ en premios y 9 rondas de ajedrez de alto nivel.",
+};
+
+const formatter = new Intl.DateTimeFormat("es-ES", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Layout>
+  <article class="mb-12">
+    <header class="flex flex-col gap-4 mb-12">
+      <a href="/noticias" class="link text-sm mb-4 w-fit"
+        >&leftarrow; Volver a noticias</a
+      >
+      <h1 class="section-heading">{frontmatter.title}</h1>
+      <p class="text-gray-600 text-lg">{frontmatter.excerpt}</p>
+      <span class="text-gray-400 text-sm"
+        >{formatter.format(frontmatter.date)}</span
+      >
+    </header>
+
+    {
+      frontmatter.cover && (
+        <div class="relative overflow-hidden rounded-3xl shadow-lg aspect-video md:aspect-[21/7] mb-12">
+          <Image
+            src={frontmatter.cover}
+            alt={frontmatter.title}
+            class="absolute inset-0 w-full h-full object-cover"
+            quality="high"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
+        </div>
+      )
+    }
+
+    <section class="content-section">
+      <p>
+        Ya están abiertas las inscripciones para el XIV Torneo Internacional
+        Ciudad de Pontevedra , que se celebrará del 24 al 30 de julio de 2026 en
+        el Pabellón Deportivo Universitario de Pontevedra. Una nueva edición de
+        uno de los torneos de ajedrez más importantes del noroeste peninsular.
+      </p>
+
+      <h2 class="section-subheading">Grupos y categorías</h2>
+
+      <p>El torneo se estructura en dos grupos de competición:</p>
+
+      <ul class="list-disc ml-12 space-y-2">
+        <li>
+          Grupo A (Máster): abierto a todos los jugadores con licencia
+          federativa en vigor, sin límite de ELO. Válido para normas y ELO FIDE.
+        </li>
+
+        <li>
+          Grupo B (Amateur): para jugadores con ELO FIDE inferior a 2000. Con
+          categorías especiales por edad, género y veteranos.
+        </li>
+      </ul>
+
+      <h2 class="section-subheading">Cómo inscribirse</h2>
+
+      <p>
+        Las inscripciones se realizan a través del correo electrónico
+        <a href="mailto:escola@xadrezpontevedra.com" class="inline-link"
+          >escola@xadrezpontevedra.com</a
+        >
+        o por teléfono en el 650 645 318.
+      </p>
+
+      <p>
+        Las inscripciones realizadas antes de las 14:00 del 25 de junio tienen
+        un 20% de descuento. No esperes al último momento.
+      </p>
+
+      <h2 class="section-subheading">Más información</h2>
+
+      <p>
+        Consulta el <a href="/reglamento" class="inline-link"
+          >reglamento completo</a
+        > para conocer todos los detalles sobre cuotas, categorías y normativa de
+        juego.
+      </p>
+    </section>
+  </article>
+</Layout>

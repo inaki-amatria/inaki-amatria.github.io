@@ -1,0 +1,100 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import { Image } from "astro:assets";
+
+import Trophies from "@assets/images/Trophies.webp";
+
+export const frontmatter = {
+  title: "El XIV Torneo Ciudad de Pontevedra repartirá 13.000€ en premios",
+  date: new Date("2026-03-16"),
+  cover: Trophies,
+  excerpt:
+    "La nueva edición del torneo aumenta su dotación económica y consolida su posición como uno de los torneos con mayor premio en metálico de Galicia.",
+};
+
+const formatter = new Intl.DateTimeFormat("es-ES", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Layout>
+  <article class="mb-12">
+    <header class="flex flex-col gap-4 mb-12">
+      <a href="/noticias" class="link text-sm mb-4 w-fit"
+        >&leftarrow; Volver a noticias</a
+      >
+      <h1 class="section-heading">{frontmatter.title}</h1>
+      <p class="text-gray-600 text-lg">{frontmatter.excerpt}</p>
+      <span class="text-gray-400 text-sm"
+        >{formatter.format(frontmatter.date)}</span
+      >
+    </header>
+
+    {
+      frontmatter.cover && (
+        <div class="relative overflow-hidden rounded-3xl shadow-lg aspect-video md:aspect-[21/7] mb-12">
+          <Image
+            src={frontmatter.cover}
+            alt={frontmatter.title}
+            class="absolute inset-0 w-full h-full object-cover"
+            quality="high"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
+        </div>
+      )
+    }
+
+    <section class="content-section">
+      <p>
+        El XIV Torneo Internacional Ciudad de Pontevedra repartirá este año un
+        total de 13.000€ en premios entre los participantes del Grupo A y el
+        Grupo B. Una dotación que refleja el crecimiento y la ambición de un
+        torneo que año tras año atrae a jugadores de todo el mundo.
+      </p>
+
+      <h2 class="section-subheading">Grupo A (Máster)</h2>
+
+      <p>
+        El primer clasificado del Grupo A se llevará 2.000€, con premios hasta
+        el decimoquinto puesto. Además, se reconocerán categorías especiales
+        como la mejor jugadora femenina, el mejor veterano mayor de 60 años y
+        los jugadores sub-2300 y sub-2150.
+      </p>
+
+      <h2 class="section-subheading">Grupo B (Amateur)</h2>
+
+      <p>
+        El Grupo B también cuenta con una generosa dotación, con 1.000€ para el
+        primer clasificado y premios hasta el duodécimo puesto. Las categorías
+        sub-1800, sub-1600, femenina, veteranos y las categorías de base también
+        tendrán su reconocimiento.
+      </p>
+
+      <h2 class="section-subheading">Premio Ramón Escudeiro Tilve</h2>
+
+      <p>
+        Como cada año, se entregará el Premio Ramón Escudeiro Tilve a la mejor
+        partida de ataque del torneo, dotado con 150€ y trofeo para ambos
+        grupos.
+      </p>
+
+      <h2 class="section-subheading">¿A qué esperas?</h2>
+
+      <p>
+        Con 13.000€ en juego, 9 rondas de ajedrez de alto nivel y la magia del
+        verano gallego de fondo, el XIV Torneo Ciudad de Pontevedra es una cita
+        que no puedes perderte. Consulta el <a
+          href="/premios"
+          class="inline-link">desglose completo de premios</a
+        > e
+        <a href="/reglamento#inscripciones" class="inline-link"
+          >inscríbete ahora</a
+        > antes de que se agoten las plazas.
+      </p>
+    </section>
+  </article>
+</Layout>

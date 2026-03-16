@@ -1,0 +1,84 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+export const frontmatter = {
+  title:
+    "El XIII Torneo Ciudad de Pontevedra cierra con gran éxito de participación",
+  date: new Date("2025-08-02"),
+  excerpt:
+    "La decimotercera edición del torneo reunió a más de 150 jugadores de una veintena de países, consolidando Pontevedra como referente del ajedrez internacional en Galicia.",
+};
+
+const formatter = new Intl.DateTimeFormat("es-ES", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Layout>
+  <article class="mb-12">
+    <header class="flex flex-col gap-4 mb-12">
+      <a href="/noticias" class="link text-sm mb-4 w-fit"
+        >&leftarrow; Volver a noticias</a
+      >
+      <h1 class="section-heading">{frontmatter.title}</h1>
+      <p class="text-gray-600 text-lg">{frontmatter.excerpt}</p>
+      <span class="text-gray-400 text-sm"
+        >{formatter.format(frontmatter.date)}</span
+      >
+    </header>
+
+    <section class="content-section">
+      <p>
+        El XIII Torneo Internacional Ciudad de Pontevedra cerró sus puertas con
+        un balance extraordinario. Durante una semana, el Pabellón Deportivo
+        Universitario de Pontevedra se convirtió en el epicentro del ajedrez
+        internacional en Galicia, acogiendo a jugadores llegados desde más de
+        veinte países.
+      </p>
+
+      <h2 class="section-subheading">Un torneo de alto nivel</h2>
+
+      <p>
+        El nivel técnico de la competición fue notable, con la participación de
+        Grandes Maestros y Maestros Internacionales. Las partidas del Grupo A
+        ofrecieron ajedrez de altísima calidad, con luchas encarnizadas en las
+        mesas de cabeza hasta la última ronda.
+      </p>
+
+      <p>
+        El Grupo B también brilló con luz propia, con una nutrida participación
+        de jugadores jóvenes y amateurs que demostraron que el ajedrez de base
+        en Galicia goza de una salud excelente.
+      </p>
+
+      <h2 class="section-subheading">Ambiente inmejorable</h2>
+
+      <p>
+        Más allá del tablero, el torneo volvió a ser una fiesta del ajedrez y de
+        la amistad. Jugadores de todo el mundo aprovecharon su estancia para
+        disfrutar de Pontevedra, su casco histórico y la incomparable
+        gastronomía de las Rías Baixas.
+      </p>
+
+      <p>
+        La organización recibió numerosos elogios por parte de los
+        participantes, que destacaron tanto las condiciones de juego como el
+        trato recibido. Una edición para el recuerdo.
+      </p>
+
+      <h2 class="section-subheading">Ya pensando en el XIV</h2>
+
+      <p>
+        Con el éxito del XIII torneo todavía fresco, la Escola Xadrez Pontevedra
+        ya trabaja en la próxima edición. El XIV Torneo Internacional Ciudad de
+        Pontevedra se celebrará del 24 al 30 de julio de 2026, con 13.000€ en
+        premios y las mismas ganas de hacer grande el ajedrez en Galicia. <a
+          href="/reglamento#inscripciones"
+          class="inline-link">¡Inscríbete ya!</a
+        >
+      </p>
+    </section>
+  </article>
+</Layout>
