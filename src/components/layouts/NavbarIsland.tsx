@@ -14,6 +14,13 @@ const links = [
   { href: "/contacto", label: "Contacto" },
 ];
 
+const featuredLinks = [
+  { href: "/reglamento", label: "Reglamento" },
+  { href: "/premios", label: "Premios" },
+  { href: "/jugadores", label: "Jugadores" },
+  { href: "/partidas", label: "Partidas" },
+];
+
 export default function NavbarIsland() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -37,9 +44,9 @@ export default function NavbarIsland() {
   }, []);
 
   return (
-    <nav class="flex justify-between items-center pt-6 pb-12">
+    <nav class="flex justify-between items-center gap-8 pt-6 pb-12">
       {/* Logo */}
-      <a href="/" class="flex items-center gap-2">
+      <a href="/" class="flex items-center gap-2 flex-shrink-0">
         <svg
           version="1.1"
           viewBox="0 0 99.167999 141.43762"
@@ -58,8 +65,17 @@ export default function NavbarIsland() {
         </div>
       </a>
 
+      {/* Enlaces destacados — solo desktop */}
+      <div class="hidden md:flex items-center gap-8 flex-shrink-0">
+        {featuredLinks.map(({ href, label }) => (
+          <a href={href} class="link">
+            {label}
+          </a>
+        ))}
+      </div>
+
       {/* Hamburger + Dropdown */}
-      <div ref={ref} class="relative">
+      <div ref={ref} class="relative flex-shrink-0">
         <button
           onClick={() => setOpen((v) => !v)}
           class="button-primary"
