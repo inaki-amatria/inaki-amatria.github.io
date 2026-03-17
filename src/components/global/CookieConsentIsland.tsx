@@ -17,6 +17,7 @@ export default function CookieConsentIsland() {
         setVisible(true);
       }
     }
+
     window.addEventListener("cookieConsentUpdated", onUpdate);
     return () => window.removeEventListener("cookieConsentUpdated", onUpdate);
   }, []);
