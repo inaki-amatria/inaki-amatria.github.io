@@ -1,33 +1,9 @@
 ---
 import Layout from "@components/layouts/Layout.astro";
+
+import PageNotFoundSection from "@components/pages/404/PageNotFoundSection.astro";
 ---
 
 <Layout title="Página no encontrada">
-  <section
-    class="relative flex flex-col items-center justify-center pb-12 text-center overflow-hidden"
-  >
-    <span
-      class="absolute text-[10rem] md:text-[14rem] font-serif italic font-bold text-blue-900/5 select-none leading-none pointer-events-none"
-    >
-      404
-    </span>
-
-    <div class="relative flex flex-col items-center gap-4">
-      <span
-        class="text-6xl md:text-8xl font-serif italic font-bold text-blue-900"
-      >
-        404
-      </span>
-
-      <h1 class="section-heading">Página no encontrada</h1>
-      <p class="text-gray-600 max-w-sm">
-        La página que buscas no existe o ha sido movida.
-      </p>
-
-      <div class="flex gap-4 mt-2">
-        <a href="/" class="button-primary">Volver al inicio</a>
-        <a href="/contacto" class="button-secondary">Contacto</a>
-      </div>
-    </div>
-  </section>
+  <PageNotFoundSection />
 </Layout>
