@@ -18,7 +18,7 @@ export default function LiveBoardsIsland() {
   const [isLoadingRound, setIsLoadingRound] = useState(true);
 
   useEffect(() => {
-    async function init() {
+    (async () => {
       const res = await fetch(
         `https://lichess.org/api/broadcast/${TOURNAMENT_ID}`,
       );
@@ -28,9 +28,7 @@ export default function LiveBoardsIsland() {
 
       setRounds(data.rounds);
       setCurrentRound(data.rounds[0]);
-    }
-
-    init();
+    })();
   }, []);
 
   useEffect(() => {
