@@ -20,5 +20,8 @@
     "lucide-astro": "^0.556.0",
     "preact": "^10.28.4",
     "tailwindcss": "^4.2.0"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }
