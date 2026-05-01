@@ -14,9 +14,11 @@ import TableOfContentsSection from "@components/pages/bases/TableOfContentsSecti
 import TieBreaksSection from "@components/pages/bases/TieBreaksSection.astro";
 import TimeControlSection from "@components/pages/bases/TimeControlSection.astro";
 import TitleSection from "@components/pages/bases/TitleSection.astro";
+import VenueSection from "@components/pages/bases/VenueSection.astro";
 
 const sections = [
   { id: "informacion-general", title: "Información general" },
+  { id: "local-de-juego", title: "Local de juego" },
   { id: "sistema-de-competicion", title: "Sistema de competición" },
   { id: "grupos-y-categorias", title: "Grupos y categorías" },
   { id: "ritmo-de-juego", title: "Ritmo de juego" },
@@ -37,6 +39,7 @@ const sections = [
   <TitleSection />
   <TableOfContentsSection sections={sections}>
     <GeneralInformationSection />
+    <VenueSection />
     <CompetitionSystemSection />
     <GroupsAndCategoriesSection />
     <TimeControlSection />
