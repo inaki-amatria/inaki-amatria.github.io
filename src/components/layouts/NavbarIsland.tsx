@@ -4,7 +4,7 @@ import "./NavbarIsland.css";
 
 const links = [
   { href: "/", label: "Inicio" },
-  { href: "/reglamento", label: "Reglamento" },
+  { href: "/bases", label: "Bases técnicas" },
   { href: "/premios", label: "Premios" },
   { href: "/jugadores", label: "Jugadores" },
   { href: "/partidas", label: "Partidas" },
@@ -15,7 +15,7 @@ const links = [
 ];
 
 const featuredLinks = [
-  { href: "/reglamento", label: "Reglamento" },
+  { href: "/bases", label: "Bases técnicas" },
   { href: "/premios", label: "Premios" },
   { href: "/jugadores", label: "Jugadores" },
   { href: "/partidas", label: "Partidas" },

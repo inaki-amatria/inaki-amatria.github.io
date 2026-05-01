@@ -1,0 +1,51 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import ByesSection from "@components/pages/bases/ByesSection.astro";
+import CompetitionSystemSection from "@components/pages/bases/CompetitionSystemSection.astro";
+import DataProtectionSection from "@components/pages/bases/DataProtectionSection.astro";
+import FinalProvisionsSection from "@components/pages/bases/FinalProvisionsSection.astro";
+import GeneralInformationSection from "@components/pages/bases/GeneralInformationSection.astro";
+import GroupsAndCategoriesSection from "@components/pages/bases/GroupsAndCategoriesSection.astro";
+import PlayingRegulationsSection from "@components/pages/bases/PlayingRegulationsSection.astro";
+import PontevedraSpecialRuleSection from "@components/pages/bases/PontevedraSpecialRuleSection.astro";
+import RegistrationSection from "@components/pages/bases/RegistrationSection.astro";
+import TableOfContentsSection from "@components/pages/bases/TableOfContentsSection.astro";
+import TieBreaksSection from "@components/pages/bases/TieBreaksSection.astro";
+import TimeControlSection from "@components/pages/bases/TimeControlSection.astro";
+import TitleSection from "@components/pages/bases/TitleSection.astro";
+
+const sections = [
+  { id: "informacion-general", title: "Información general" },
+  { id: "sistema-de-competicion", title: "Sistema de competición" },
+  { id: "grupos-y-categorias", title: "Grupos y categorías" },
+  { id: "ritmo-de-juego", title: "Ritmo de juego" },
+  { id: "byes", title: "Byes" },
+  { id: "desempates", title: "Desempates" },
+  { id: "regla-especial-pontevedra", title: "Regla especial Pontevedra" },
+  { id: "normativa-de-juego", title: "Normativa de juego" },
+  { id: "inscripciones", title: "Inscripciones" },
+  {
+    id: "proteccion-de-datos-y-derechos-de-imagen",
+    title: "Protección de datos y derechos de imagen",
+  },
+  { id: "disposiciones-finales", title: "Disposiciones finales" },
+];
+---
+
+<Layout title="Bases técnicas">
+  <TitleSection />
+  <TableOfContentsSection sections={sections}>
+    <GeneralInformationSection />
+    <CompetitionSystemSection />
+    <GroupsAndCategoriesSection />
+    <TimeControlSection />
+    <ByesSection />
+    <TieBreaksSection />
+    <PontevedraSpecialRuleSection />
+    <PlayingRegulationsSection />
+    <RegistrationSection />
+    <DataProtectionSection />
+    <FinalProvisionsSection />
+  </TableOfContentsSection>
+</Layout>
