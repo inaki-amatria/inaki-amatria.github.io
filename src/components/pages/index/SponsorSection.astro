@@ -4,13 +4,21 @@ import DeporteGalego from "@assets/logos/DeporteGalego.svg";
 import DeportePontevedra from "@assets/logos/DeportePontevedra.svg";
 import DeputacionPontevedra from "@assets/logos/DeputacionPontevedra.svg";
 import UniversidadeVigo from "@assets/logos/UniversidadeVigo.svg";
+import LosSauces from "@assets/logos/LosSauces.svg";
+import FIDE from "@assets/logos/FIDE.svg";
 
 const sponsors = [
-  { logo: ConcelloPontevedra, name: "Concello de Pontevedra" },
-  { logo: DeporteGalego, name: "Deporte Galego" },
-  { logo: DeportePontevedra, name: "Deporte Pontevedra" },
-  { logo: DeputacionPontevedra, name: "Deputación de Pontevedra" },
-  { logo: UniversidadeVigo, name: "Universidade de Vigo" },
+  { logo: ConcelloPontevedra, name: "Concello de Pontevedra", size: "primary" },
+  {
+    logo: DeputacionPontevedra,
+    name: "Deputación de Pontevedra",
+    size: "primary",
+  },
+  { logo: DeporteGalego, name: "Deporte Galego", size: "secondary" },
+  { logo: DeportePontevedra, name: "Deporte Pontevedra", size: "secondary" },
+  { logo: UniversidadeVigo, name: "Universidade de Vigo", size: "primary" },
+  { logo: LosSauces, name: "Los Sauces", size: "secondary" },
+  { logo: FIDE, name: "FIDE", size: "secondary" },
 ];
 ---
 
@@ -26,9 +34,13 @@ const sponsors = [
 
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
     {
-      sponsors.map(({ logo: Logo, name }) => (
-        <div class="card flex items-center justify-center aspect-video p-6">
-          <Logo aria-label={name} class="h-12 w-full text-blue-900" />
+      sponsors.map(({ logo: Logo, name, size }) => (
+        <div
+          class={`card flex items-center justify-center p-6 ${
+            size === "primary" ? "md:col-span-2" : ""
+          }`}
+        >
+          <Logo aria-label={name} class="w-full text-blue-900 h-12" />
         </div>
       ))
     }
