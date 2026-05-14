@@ -1,0 +1,28 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { getPath } from "@i18n/utils.ts";
+
+export interface Props {
+  lang: Lang;
+  slug: string;
+}
+
+const { lang, slug } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<p>{t(`${slug}.p1`)}</p>
+<h2 class="section-subheading">{t(`${slug}.h1`)}</h2>
+<p>{t(`${slug}.p2`)}</p>
+<p>{t(`${slug}.p3`)}</p>
+<h2 class="section-subheading">{t(`${slug}.h2`)}</h2>
+<p>{t(`${slug}.p4`)}</p>
+<p>{t(`${slug}.p5`)}</p>
+<h2 class="section-subheading">{t(`${slug}.h3`)}</h2>
+<p>
+  {t(`${slug}.p6`)}
+  <a href={getPath(lang, "bases#inscripciones")} class="inline-link">
+    {t(`${slug}.cta`)}
+  </a>
+</p>

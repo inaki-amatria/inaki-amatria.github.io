@@ -1,0 +1,56 @@
+---
+import { Users, Trophy } from "@lucide/astro";
+
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const platforms = [
+  {
+    name: "Info64",
+    url: "https://info64.org/xiv-torneo-internacional-cidade-de-pontevedra-masters",
+    description: t("ResultServersSection.info64Desc"),
+    Icon: Trophy,
+  },
+  {
+    name: "Chess-Results",
+    url: "https://chess-results.com/tnr1360196.aspx?lan=1&art=0&turdet=YES&flag=30&SNode=S0",
+    description: t("ResultServersSection.chessResultsDesc"),
+    Icon: Users,
+  },
+];
+---
+
+<section class="mb-12">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {
+      platforms.map(({ name, url, description, Icon }) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card p-6 flex flex-col gap-4"
+        >
+          <div class="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center">
+            <Icon class="w-5 h-5 text-blue-900" />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <span class="label">{name}</span>
+            <p class="text-gray-600 text-sm">{description}</p>
+          </div>
+
+          <span class="link text-sm mt-auto">
+            {t("ResultServersSection.viewRanking")} →
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</section>

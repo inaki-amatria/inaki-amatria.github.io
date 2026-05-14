@@ -1,0 +1,15 @@
+---
+import type { Lang } from "@i18n/config.ts";
+
+import LiveBoardsIsland from "./LiveBoardsIsland.tsx";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section class="mb-12">
+  <LiveBoardsIsland lang={lang} client:load />
+</section>

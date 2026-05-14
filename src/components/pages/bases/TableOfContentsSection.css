@@ -1,0 +1,31 @@
+details[open] .toc-icon-open {
+  display: block;
+}
+
+details[open] .toc-icon-closed {
+  display: none;
+}
+
+.toc-icon-open {
+  display: none;
+}
+
+.toc-icon-closed {
+  display: block;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.15s ease-out;
+}

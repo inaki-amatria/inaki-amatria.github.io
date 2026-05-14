@@ -1,0 +1,55 @@
+---
+import Star from "@assets/icons/Star.svg";
+
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="mb-12">
+  <div
+    class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-900 to-blue-950 px-6 py-12 shadow-lg"
+  >
+    <div class="absolute right-0 bottom-0 opacity-5 pointer-events-none">
+      <Star />
+    </div>
+
+    <div
+      class="relative flex flex-col md:flex-row md:items-center justify-between gap-8"
+    >
+      <div class="flex flex-col gap-4">
+        <span
+          class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest bg-white/10 text-blue-200 w-fit"
+        >
+          {t("RamonEscudeiroSection.specialLabel")}
+        </span>
+
+        <h3 class="text-white text-3xl md:text-4xl font-bold font-serif italic">
+          {t("RamonEscudeiroSection.title")}
+        </h3>
+
+        <p class="text-blue-50/70 max-w-2xl">
+          {t("RamonEscudeiroSection.description")}
+        </p>
+      </div>
+
+      <div class="flex flex-col items-start md:items-end gap-1 shrink-0">
+        <span class="text-blue-200 text-xs font-bold uppercase tracking-widest">
+          {t("RamonEscudeiroSection.grant")}
+        </span>
+
+        <span class="text-white text-5xl font-bold font-serif italic">
+          {t("RamonEscudeiroSection.amount")}
+        </span>
+
+        <span class="text-blue-50/60">{t("PrizesGroupASection.trophy")}</span>
+      </div>
+    </div>
+  </div>
+</section>

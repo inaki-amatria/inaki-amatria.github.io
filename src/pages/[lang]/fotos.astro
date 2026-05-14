@@ -1,0 +1,20 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import PhotoGallerySection from "@components/pages/fotos/PhotoGallerySection.astro";
+import TitleSection from "@components/pages/fotos/TitleSection.astro";
+
+import { type Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { staticLangPaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = staticLangPaths;
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} route={"fotos"} title={t("fotos.title")}>
+  <TitleSection lang={lang} />
+  <PhotoGallerySection lang={lang} />
+</Layout>

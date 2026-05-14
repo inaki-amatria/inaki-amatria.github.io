@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+
+import Players from "@assets/images/Players.webp";
+
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { getPath } from "@i18n/utils.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="relative overflow-hidden card mb-12">
+  <Image
+    src={Players}
+    alt={t("TournamentHeroSection.alt")}
+    class="absolute inset-0 object-cover w-full h-full"
+    quality="high"
+    loading="eager"
+  />
+
+  <div
+    class="relative w-full h-full bg-gradient-to-r from-blue-900/80 via-blue-900/40 to-transparent px-6 py-12"
+  >
+    <div class="flex flex-col gap-4 max-w-2xl">
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 w-fit"
+      >
+        <span class="relative flex h-2 w-2">
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"
+          ></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-white"
+          ></span>
+        </span>
+        <span class="text-white text-xs font-bold uppercase tracking-widest">
+          {t("TournamentHeroSection.date")}
+        </span>
+      </div>
+
+      <h1
+        class="text-white text-4xl md:text-6xl font-bold leading-[1.1] tracking-tight"
+      >
+        {t("TournamentHeroSection.title")}
+        <br />
+        <span
+          class="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-400 font-serif italic"
+        >
+          {t("TournamentHeroSection.titleItalic")}
+        </span>
+      </h1>
+
+      <p class="text-blue-50 text-lg md:text-xl max-w-lg">
+        {t("TournamentHeroSection.description")}
+      </p>
+
+      <div class="flex flex-wrap gap-4 mt-2">
+        <a href={getPath(lang, "bases#inscripciones")} class="button-primary">
+          {t("TournamentHeroSection.register")}
+        </a>
+        <a href={getPath(lang, "bases")} class="button-secondary">
+          {t("TournamentHeroSection.rules")}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

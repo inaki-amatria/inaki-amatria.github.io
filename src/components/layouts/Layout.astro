@@ -1,0 +1,79 @@
+---
+import { ClientRouter } from "astro:transitions";
+
+import CookieConsentIsland from "@components/global/CookieConsentIsland.tsx";
+
+import { type Lang, languages, defaultLang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { getPath } from "@i18n/utils.ts";
+
+import "@styles/global.css";
+
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+
+export interface Props {
+  lang: Lang;
+  route?: string;
+  title?: string;
+}
+
+const { lang, route = "", title } = Astro.props;
+const t = useTranslations(lang);
+
+const pageTitle = title ? `${title} | ${t("Layout.title")}` : t("Layout.title");
+const appTitle = title ? `${title}` : t("Layout.acronym");
+---
+
+<!doctype html>
+<html lang={lang} transition:animate="none">
+  <head>
+    <title>{pageTitle}</title>
+    <meta name="apple-mobile-web-app-title" content={appTitle} />
+
+    <meta name="author" content="Iñaki Amatria Barral" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {
+      Object.keys(languages).map((l) => (
+        <link
+          rel="alternate"
+          hreflang={l}
+          href={`${Astro.site}${getPath(l as Lang, route).slice(1)}`}
+        />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={`${Astro.site}${getPath(defaultLang, route).slice(1)}`}
+    />
+    <link
+      rel="canonical"
+      href={`${Astro.site}${getPath(lang, route).slice(1)}`}
+    />
+
+    <ClientRouter />
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-gray-50 max-w-6xl mx-auto px-4 md:px-6 font-['Inter'] antialiased"
+  >
+    <Header lang={lang} route={route} />
+    <slot />
+    <Footer lang={lang} />
+    <CookieConsentIsland lang={lang} client:load />
+  </body>
+</html>

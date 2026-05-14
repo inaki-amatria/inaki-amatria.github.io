@@ -1,0 +1,31 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="regla-especial-pontevedra" class="content-section">
+  <h2 class="section-heading">
+    {t("PontevedraSpecialRuleSection.title")}
+  </h2>
+  <p>
+    {t("PontevedraSpecialRuleSection.p1")}
+  </p>
+
+  <ul class="list-disc ml-12 space-y-2">
+    <li>
+      {t("PontevedraSpecialRuleSection.li1")}
+    </li>
+    <li>
+      {t("PontevedraSpecialRuleSection.li2")}
+    </li>
+  </ul>
+
+  <p>{t("PontevedraSpecialRuleSection.p2")}</p>
+</section>

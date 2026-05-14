@@ -1,0 +1,28 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import PrizesCTASection from "@components/pages/premios/PrizesCTASection.astro";
+import PrizesDisclaimerSection from "@components/pages/premios/PrizesDisclaimerSection.astro";
+import PrizesGroupASection from "@components/pages/premios/PrizesGroupASection.astro";
+import PrizesGroupBSection from "@components/pages/premios/PrizesGroupBSection.astro";
+import PrizesHeroSection from "@components/pages/premios/PrizesHeroSection.astro";
+import RamonEscudeiroSection from "@components/pages/premios/RamonEscudeiroSection.astro";
+
+import { type Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { staticLangPaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = staticLangPaths;
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} route={"premios"} title={t("premios.title")}>
+  <PrizesHeroSection lang={lang} />
+  <PrizesDisclaimerSection lang={lang} />
+  <PrizesGroupASection lang={lang} />
+  <PrizesGroupBSection lang={lang} />
+  <RamonEscudeiroSection lang={lang} />
+  <PrizesCTASection lang={lang} />
+</Layout>

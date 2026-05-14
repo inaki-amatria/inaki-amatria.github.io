@@ -1,0 +1,48 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="proteccion-de-datos-y-derechos-de-imagen" class="content-section">
+  <h2 class="section-heading">{t("DataProtectionSection.title")}</h2>
+
+  <h3 class="section-subheading">{t("DataProtectionSection.lopdTitle")}</h3>
+
+  <p>
+    {t("DataProtectionSection.lopdP")}
+  </p>
+
+  <h3 class="section-subheading">
+    {t("DataProtectionSection.imageRightsTitle")}
+  </h3>
+
+  <p>
+    {t("DataProtectionSection.imageRightsP1")}
+  </p>
+
+  <p>{t("DataProtectionSection.imageRightsP2")}</p>
+
+  <ul class="list-disc ml-12 space-y-2">
+    <li>
+      {t("DataProtectionSection.li1")}
+    </li>
+    <li>
+      {t("DataProtectionSection.li2")}
+    </li>
+  </ul>
+
+  <p>
+    {t("DataProtectionSection.imageRightsP3")}
+  </p>
+
+  <p>
+    {t("DataProtectionSection.imageRightsP4")}
+  </p>
+</section>

@@ -1,0 +1,18 @@
+---
+import { defaultLang } from "@i18n/config.ts";
+
+const url = `/${defaultLang}`;
+---
+
+<html lang={defaultLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=${url}`} />
+
+    <link rel="canonical" href={url} />
+  </head>
+
+  <body>
+    <a href={url}>→ {url}</a>
+  </body>
+</html>

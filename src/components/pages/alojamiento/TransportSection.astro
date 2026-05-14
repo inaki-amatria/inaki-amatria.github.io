@@ -1,0 +1,65 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const transports = [
+  {
+    icon: "🚍",
+    name: t("TransportSection.bus"),
+    description: t("TransportSection.busDesc"),
+    url: "https://www.autobusespontevedra.com",
+    label: "autobusespontevedra.com",
+  },
+  {
+    icon: "🚆",
+    name: t("TransportSection.train"),
+    description: t("TransportSection.trainDesc"),
+    url: "https://www.renfe.com",
+    label: "renfe.com",
+  },
+  {
+    icon: "🚘",
+    name: t("TransportSection.car"),
+    description: t("TransportSection.carDesc"),
+    url: "https://maps.app.goo.gl/amBQQKXyUR1kasvP8",
+    label: "google.com/maps",
+  },
+  {
+    icon: "🚖",
+    name: t("TransportSection.taxi"),
+    description: t("TransportSection.taxiDesc"),
+    url: "https://radiotaxipontevedra.es",
+    label: "radiotaxipontevedra.es",
+  },
+];
+---
+
+<section class="flex flex-col gap-8 mb-12">
+  <h2 class="section-heading">{t("TransportSection.title")}</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {
+      transports.map(({ icon, name, description, url, label }) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card p-6 flex flex-col gap-4 group"
+        >
+          <span class="label">
+            {icon} {name}
+          </span>
+          <p class="text-gray-600 text-sm">{description}</p>
+          <span class="link text-sm mt-auto">{label} →</span>
+        </a>
+      ))
+    }
+  </div>
+</section>

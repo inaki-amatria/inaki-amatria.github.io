@@ -1,0 +1,34 @@
+---
+import ArticleLayout from "@components/layouts/ArticleLayout.astro";
+
+import ClosingXIIIEdition from "@components/pages/noticias/articulos/ClosingXIIIEdition.astro";
+import PrizesXIVEdition from "@components/pages/noticias/articulos/PrizesXIVEdition.astro";
+import RegistrationOpen from "@components/pages/noticias/articulos/RegistrationOpen.astro";
+
+import { languages, type Lang } from "@i18n/config.ts";
+import { news } from "@i18n/news.ts";
+
+export function getStaticPaths() {
+  return news.flatMap((n) =>
+    Object.keys(languages).map((lang) => ({
+      params: { lang, slug: n.slug },
+      props: n,
+    })),
+  );
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const { slug, date, cover } = Astro.props;
+
+const articles = {
+  "cierre-xiii-edicion": ClosingXIIIEdition,
+  "inscripciones-abiertas": RegistrationOpen,
+  "premios-xiv-edicion": PrizesXIVEdition,
+};
+
+const Article = articles[slug as keyof typeof articles];
+---
+
+<ArticleLayout lang={lang} slug={slug} date={date} cover={cover}>
+  <Article lang={lang} slug={slug} />
+</ArticleLayout>

@@ -1,0 +1,52 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+import AccommodationHeroSection from "./AccommodationHeroSection.astro";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="mb-12">
+  <AccommodationHeroSection lang={lang} class="lg:hidden h-64 mb-12" />
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+    <div class="lg:col-span-2 flex flex-col gap-4 text-gray-600">
+      <h2 class="section-heading">{t("AccommodationSection.title")}</h2>
+
+      <p>{t("AccommodationSection.p1")}</p>
+
+      <p>{t("AccommodationSection.p2")}</p>
+
+      <p>{t("AccommodationSection.p3")}</p>
+
+      <p>{t("AccommodationSection.p4")}</p>
+
+      <div class="flex flex-wrap gap-4 mt-2">
+        <a
+          href="https://www.turismoriasbaixas.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button-primary"
+        >
+          {t("AccommodationSection.ctaRiasBaixas")}
+        </a>
+
+        <a
+          href="https://www.turismo.gal"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button-secondary"
+        >
+          {t("AccommodationSection.ctaGalicia")}
+        </a>
+      </div>
+    </div>
+
+    <AccommodationHeroSection lang={lang} class="hidden lg:block" />
+  </div>
+</section>

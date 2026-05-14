@@ -1,0 +1,22 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import SponsorCTASection from "@components/pages/index/SponsorCTASection.astro";
+import SponsorSection from "@components/pages/index/SponsorSection.astro";
+import TournamentHeroSection from "@components/pages/index/TournamentHeroSection.astro";
+import TournamentOverviewSection from "@components/pages/index/TournamentOverviewSection.astro";
+
+import { type Lang } from "@i18n/config.ts";
+import { staticLangPaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = staticLangPaths;
+
+const { lang } = Astro.params as { lang: Lang };
+---
+
+<Layout lang={lang}>
+  <TournamentHeroSection lang={lang} />
+  <TournamentOverviewSection lang={lang} />
+  <SponsorSection lang={lang} />
+  <SponsorCTASection lang={lang} />
+</Layout>

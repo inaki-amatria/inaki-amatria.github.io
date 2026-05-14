@@ -1,0 +1,52 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { getPath } from "@i18n/utils.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="content-section">
+  <h2 class="section-heading">{t("PrivacyPolicySection.title")}</h2>
+
+  <p>
+    {t("PrivacyPolicySection.intro")}
+    <a href="mailto:escola@xadrezpontevedra.com" class="inline-link"
+      >escola@xadrezpontevedra.com</a
+    >.
+  </p>
+
+  <h3 class="section-subheading">{t("PrivacyPolicySection.whatDataTitle")}</h3>
+
+  <p>
+    {t("PrivacyPolicySection.whatDataP1")}
+  </p>
+
+  <p>
+    {t("PrivacyPolicySection.whatDataP2")}
+    <a href={getPath(lang, "cookies")} class="inline-link"
+      >{t("PrivacyPolicySection.cookiesLink")}</a
+    >.
+    {t("PrivacyPolicySection.whatDataP3")}
+  </p>
+
+  <h3 class="section-subheading">{t("PrivacyPolicySection.rightsTitle")}</h3>
+
+  <p>
+    {t("PrivacyPolicySection.rightsP1")}
+    <a href="mailto:escola@xadrezpontevedra.com" class="inline-link"
+      >escola@xadrezpontevedra.com</a
+    >{t("PrivacyPolicySection.rightsP2")}
+    <a
+      href="https://www.aepd.es"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-link">{t("PrivacyPolicySection.aepd")}</a
+    >.
+  </p>
+</section>

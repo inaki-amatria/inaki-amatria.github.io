@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://inaki-amatria.github.io/sitemap-index.xml

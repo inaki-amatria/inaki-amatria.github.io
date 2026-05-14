@@ -1,0 +1,20 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import AccommodationSection from "@components/pages/alojamiento/AccommodationSection.astro";
+import TransportSection from "@components/pages/alojamiento/TransportSection.astro";
+
+import { type Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { staticLangPaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = staticLangPaths;
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} route={"alojamiento"} title={t("alojamiento.title")}>
+  <AccommodationSection lang={lang} />
+  <TransportSection lang={lang} />
+</Layout>

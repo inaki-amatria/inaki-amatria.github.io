@@ -1,0 +1,100 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const rounds = [
+  { n: 1, date: "24/07/2026", time: "16:30", double: false },
+  { n: 2, date: "25/07/2026", time: "09:30", double: true },
+  { n: 3, date: "25/07/2026", time: "16:30", double: true },
+  { n: 4, date: "26/07/2026", time: "16:30", double: false },
+  { n: 5, date: "27/07/2026", time: "09:30", double: true },
+  { n: 6, date: "27/07/2026", time: "16:30", double: true },
+  { n: 7, date: "28/07/2026", time: "16:30", double: false },
+  { n: 8, date: "29/07/2026", time: "16:30", double: false },
+  { n: 9, date: "30/07/2026", time: "09:30", double: false },
+];
+---
+
+<section id="sistema-de-competicion" class="content-section">
+  <h2 class="section-heading">{t("CompetitionSystemSection.title")}</h2>
+
+  <p>{t("CompetitionSystemSection.p1")}</p>
+
+  <p>
+    {t("CompetitionSystemSection.p2")}
+  </p>
+
+  <p>
+    {t("CompetitionSystemSection.p3")}
+    <a
+      href="https://info64.org/xiv-torneo-internacional-cidade-de-pontevedra-masters"
+      target="_blank"
+      class="inline-link">Info64</a
+    >
+    {t("CompetitionSystemSection.and")}
+    <a
+      href="https://chess-results.com/tnr1360196.aspx?lan=1&art=0&turdet=YES&flag=30&SNode=S0"
+      target="_blank"
+      class="inline-link">Chess-Results</a
+    >.
+  </p>
+
+  <p>
+    {t("CompetitionSystemSection.p4")}
+  </p>
+
+  <h3 class="section-subheading">
+    {t("CompetitionSystemSection.calendarTitle")}
+  </h3>
+
+  <div class="card overflow-hidden">
+    <div class="grid grid-cols-3 table-header">
+      <span class="table-header-cell"
+        >{t("CompetitionSystemSection.tableRound")}</span
+      >
+      <span class="table-header-cell"
+        >{t("CompetitionSystemSection.tableDate")}</span
+      >
+      <span class="table-header-cell"
+        >{t("CompetitionSystemSection.tableTime")}</span
+      >
+    </div>
+    {
+      rounds.map(({ n, date, time, double: isDouble }) => (
+        <div class="grid grid-cols-3 px-6 py-3 hover:bg-blue-50 transition-colors duration-300 items-center">
+          <span class="text-blue-900 font-bold text-sm">
+            {t(`CompetitionSystemSection.round.${n}` as any)}
+          </span>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1">
+            <span class="table-cell">{date}</span>
+            {isDouble && (
+              <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-900 uppercase tracking-widest whitespace-nowrap w-fit">
+                {t("CompetitionSystemSection.doubleTag")}
+              </span>
+            )}
+          </div>
+          <span class="table-cell">{time}</span>
+        </div>
+      ))
+    }
+  </div>
+
+  <p>
+    {t("CompetitionSystemSection.delayNote")}
+  </p>
+
+  <h3 class="section-subheading">
+    {t("CompetitionSystemSection.closingTitle")}
+  </h3>
+
+  <p>
+    {t("CompetitionSystemSection.closingP")}
+  </p>
+</section>

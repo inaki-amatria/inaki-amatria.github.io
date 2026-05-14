@@ -1,0 +1,16 @@
+---
+import type { Lang } from "@i18n/config.ts";
+
+import NavbarIsland from "./NavbarIsland.tsx";
+
+export interface Props {
+  lang: Lang;
+  route: string;
+}
+
+const { lang, route } = Astro.props;
+---
+
+<header>
+  <NavbarIsland lang={lang} route={route} client:load />
+</header>

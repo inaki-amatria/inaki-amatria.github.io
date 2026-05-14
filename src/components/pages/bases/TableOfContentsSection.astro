@@ -1,0 +1,85 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+import TableOfContentsIsland from "./TableOfContentsIsland.tsx";
+
+import "./TableOfContentsSection.css";
+
+export interface Props {
+  lang: Lang;
+  sections: { id: string; title: string }[];
+}
+
+const { lang, sections } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col lg:flex-row gap-12">
+  <details class="lg:hidden sticky top-6 z-20">
+    <summary class="cursor-pointer list-none">
+      <div
+        class="card px-4 py-3 flex justify-between items-center text-blue-900 font-bold"
+      >
+        {t("TableOfContentsSection.mobileTitle")}
+        <svg
+          class="toc-icon-closed w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg
+          class="toc-icon-open w-6 h-6"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        >
+          <path d="M18 6L6 18M6 6l12 12"></path>
+        </svg>
+      </div>
+    </summary>
+    <nav class="card mt-2 p-2 flex flex-col animate-fade-in">
+      {
+        sections.map((section) => (
+          <a
+            href={`#${section.id}`}
+            data-target={section.id}
+            aria-label={section.title}
+            class="toc-link px-4 py-3 rounded-2xl text-gray-600 hover:bg-blue-50 hover:text-blue-900 text-sm transition-colors duration-300"
+          >
+            {section.title}
+          </a>
+        ))
+      }
+    </nav>
+  </details>
+
+  <div class="flex-1 flex-shrink-0">
+    <slot />
+  </div>
+
+  <aside class="hidden lg:block sticky top-12 mb-12 self-start">
+    <nav class="flex flex-col">
+      {
+        sections.map((section) => (
+          <a
+            href={`#${section.id}`}
+            data-target={section.id}
+            aria-label={section.title}
+            class="toc-link border-l border-gray-200 text-gray-600 hover:border-blue-900 hover:text-blue-900 text-sm pl-4 pt-2 pb-2 transition-colors duration-300"
+          >
+            {section.title}
+          </a>
+        ))
+      }
+    </nav>
+  </aside>
+</div>
+
+<TableOfContentsIsland client:load />

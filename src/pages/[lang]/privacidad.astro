@@ -1,0 +1,18 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import PrivacyPolicySection from "@components/pages/privacidad/PrivacyPolicySection.astro";
+
+import { type Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { staticLangPaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = staticLangPaths;
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} route={"privacidad"} title={t("privacidad.title")}>
+  <PrivacyPolicySection lang={lang} />
+</Layout>

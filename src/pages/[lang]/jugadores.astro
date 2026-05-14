@@ -1,0 +1,22 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import PlayersSection from "@components/pages/jugadores/PlayersSection.astro";
+import ResultServersSection from "@components/pages/jugadores/ResultServersSection.astro";
+import TitleSection from "@components/pages/jugadores/TitleSection.astro";
+
+import { type Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { staticLangPaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = staticLangPaths;
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} route={"jugadores"} title={t("jugadores.title")}>
+  <TitleSection lang={lang} />
+  <ResultServersSection lang={lang} />
+  <PlayersSection lang={lang} />
+</Layout>

@@ -1,0 +1,31 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="informacion-general" class="content-section">
+  <h2 class="section-heading">{t("GeneralInformationSection.title")}</h2>
+
+  <p>
+    {t("GeneralInformationSection.p1")}
+  </p>
+
+  <p>
+    {t("GeneralInformationSection.p2")}
+  </p>
+
+  <p>
+    {t("GeneralInformationSection.p3")}
+  </p>
+
+  <p>
+    {t("GeneralInformationSection.p4")}
+  </p>
+</section>

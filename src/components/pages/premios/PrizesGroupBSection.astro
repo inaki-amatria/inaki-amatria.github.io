@@ -1,0 +1,168 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const mainPrizes = [
+  { pos: t("PrizesGroupASection.pos4"), prize: "400€" },
+  { pos: t("PrizesGroupASection.pos5"), prize: "300€" },
+  { pos: t("PrizesGroupASection.pos6"), prize: "200€" },
+  { pos: t("PrizesGroupASection.pos7"), prize: "200€" },
+  { pos: t("PrizesGroupASection.pos8"), prize: "150€" },
+  { pos: t("PrizesGroupASection.pos9"), prize: "150€" },
+  { pos: t("PrizesGroupASection.pos10"), prize: "150€" },
+  { pos: t("PrizesGroupASection.pos11"), prize: "100€" },
+  { pos: t("PrizesGroupASection.pos12"), prize: "100€" },
+];
+---
+
+<section class="flex flex-col gap-8 mb-12">
+  <h2 class="section-heading">{t("PrizesGroupBSection.title")}</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div
+      class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-900 to-blue-950 p-6 flex flex-col gap-2 justify-end shadow-lg min-h-48"
+    >
+      <div
+        class="absolute top-4 right-4 text-white/10 font-serif italic font-bold text-8xl leading-none select-none"
+      >
+        1
+      </div>
+      <span
+        class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest bg-white/10 text-blue-200 w-fit"
+      >
+        {t("PrizesGroupASection.1st")}
+      </span>
+      <span
+        class="text-white text-5xl font-bold font-serif italic leading-none"
+      >
+        {t("PrizesGroupBSection.prize1")}
+      </span>
+      <span class="text-blue-50/60 text-sm"
+        >{t("PrizesGroupASection.trophy")}</span
+      >
+    </div>
+
+    <div
+      class="relative overflow-hidden card p-6 flex flex-col gap-2 justify-end min-h-48"
+    >
+      <div
+        class="absolute top-4 right-4 text-blue-900/5 font-serif italic font-bold text-8xl leading-none select-none"
+      >
+        2
+      </div>
+      <span class="pill-blue w-fit">{t("PrizesGroupASection.2nd")}</span>
+      <span
+        class="text-blue-900 text-5xl font-bold font-serif italic leading-none"
+      >
+        {t("PrizesGroupBSection.prize700")}
+      </span>
+      <span class="text-gray-600 text-sm"
+        >{t("PrizesGroupASection.trophy")}</span
+      >
+    </div>
+
+    <div
+      class="relative overflow-hidden card p-6 flex flex-col gap-2 justify-end min-h-48"
+    >
+      <div
+        class="absolute top-4 right-4 text-blue-900/5 font-serif italic font-bold text-8xl leading-none select-none"
+      >
+        3
+      </div>
+      <span class="pill-blue w-fit">{t("PrizesGroupASection.3rd")}</span>
+      <span
+        class="text-blue-900 text-5xl font-bold font-serif italic leading-none"
+      >
+        {t("PrizesGroupBSection.prize500")}
+      </span>
+      <span class="text-gray-600 text-sm"
+        >{t("PrizesGroupASection.trophy")}</span
+      >
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    {
+      mainPrizes.map(({ pos, prize }) => (
+        <div class="bg-white rounded-2xl shadow-md px-4 py-3 flex items-center justify-between gap-2">
+          <span class="text-gray-600 text-sm">{pos}</span>
+          <span class="text-blue-900 font-bold text-sm">{prize}</span>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="flex items-center gap-4">
+    <div class="h-px bg-gray-200 flex-1"></div>
+    <span class="text-xs font-bold uppercase tracking-widest text-gray-400">
+      {t("PrizesGroupASection.special")}
+    </span>
+    <div class="h-px bg-gray-200 flex-1"></div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div
+      class="bg-white rounded-2xl shadow-md px-4 py-3 flex items-center justify-between gap-2"
+    >
+      <span class="text-gray-600 text-sm"
+        >{t("PrizesGroupBSection.sub1800")}</span
+      >
+      <span class="text-blue-900 font-bold text-sm shrink-0 ml-4"
+        >{t("PrizesGroupASection.prize150")}</span
+      >
+    </div>
+    <div
+      class="bg-white rounded-2xl shadow-md px-4 py-3 flex items-center justify-between gap-2"
+    >
+      <span class="text-gray-600 text-sm"
+        >{t("PrizesGroupBSection.sub1600")}</span
+      >
+      <span class="text-blue-900 font-bold text-sm shrink-0 ml-4"
+        >{t("PrizesGroupASection.prize150")}</span
+      >
+    </div>
+    <div
+      class="bg-white rounded-2xl shadow-md px-4 py-3 flex items-center justify-between gap-2"
+    >
+      <span class="text-gray-600 text-sm">{t("PrizesGroupASection.woman")}</span
+      >
+      <span class="text-blue-900 font-bold text-sm shrink-0 ml-4"
+        >{t("PrizesGroupASection.prize150")}
+        {t("PrizesGroupASection.trophy")}</span
+      >
+    </div>
+    <div
+      class="bg-white rounded-2xl shadow-md px-4 py-3 flex items-center justify-between gap-2"
+    >
+      <span class="text-gray-600 text-sm"
+        >{t("PrizesGroupASection.veteran")}</span
+      >
+      <span class="text-blue-900 font-bold text-sm shrink-0 ml-4"
+        >{t("PrizesGroupASection.trophyBook")}</span
+      >
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-md px-4 py-3 sm:col-span-2">
+      <div class="flex items-center justify-between gap-2">
+        <div>
+          <span class="text-gray-600 text-sm"
+            >{t("PrizesGroupBSection.baseCategories")}</span
+          >
+          <p class="text-gray-400 text-xs mt-1">
+            {t("PrizesGroupBSection.baseCategoriesDesc")}
+          </p>
+        </div>
+        <span class="text-blue-900 font-bold text-sm shrink-0 ml-4">
+          {t("PrizesGroupBSection.material")}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

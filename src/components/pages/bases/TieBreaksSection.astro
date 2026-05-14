@@ -1,0 +1,31 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="desempates" class="content-section">
+  <h2 class="section-heading">{t("TieBreaksSection.title")}</h2>
+
+  <p>
+    {t("TieBreaksSection.p1")}
+  </p>
+
+  <ol class="list-decimal ml-12 space-y-2">
+    <li>{t("TieBreaksSection.li1")}</li>
+    <li>{t("TieBreaksSection.li2")}</li>
+    <li>{t("TieBreaksSection.li3")}</li>
+    <li>{t("TieBreaksSection.li4")}</li>
+    <li>{t("TieBreaksSection.li5")}</li>
+  </ol>
+
+  <p>
+    {t("TieBreaksSection.p2")}
+  </p>
+</section>

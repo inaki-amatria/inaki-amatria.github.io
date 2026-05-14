@@ -1,0 +1,130 @@
+---
+import Facebook from "@assets/icons/Facebook.svg";
+import Instagram from "@assets/icons/Instagram.svg";
+import Twitter from "@assets/icons/Twitter.svg";
+import YouTube from "@assets/icons/YouTube.svg";
+
+import ManageCookiesIsland from "@components/global/ManageCookiesIsland.tsx";
+
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { getPath } from "@i18n/utils.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const links = [
+  { href: getPath(lang, ""), label: t("Footer.index") },
+  { href: getPath(lang, "bases"), label: t("Footer.regulations") },
+  { href: getPath(lang, "premios"), label: t("Footer.prizes") },
+  { href: getPath(lang, "jugadores"), label: t("Footer.players") },
+  { href: getPath(lang, "partidas"), label: t("Footer.games") },
+  {
+    href: getPath(lang, "alojamiento"),
+    label: t("Footer.accommodation"),
+  },
+  { href: getPath(lang, "fotos"), label: t("Footer.pictures") },
+  { href: getPath(lang, "noticias"), label: t("Footer.news") },
+  { href: getPath(lang, "contacto"), label: t("Footer.contact") },
+];
+
+const legalLinks = [
+  { href: getPath(lang, "privacidad"), label: t("Footer.privacy") },
+  { href: getPath(lang, "cookies"), label: t("Footer.cookies") },
+];
+
+const socialLinks = {
+  facebook: {
+    href: "https://facebook.com/escola.pontevedra",
+    Icon: Facebook,
+    label: "Facebook",
+  },
+  instagram: {
+    href: "https://www.instagram.com/expontevedra",
+    Icon: Instagram,
+    label: "Instagram",
+  },
+  twitter: {
+    href: "https://x.com/xadrezpontevedr",
+    Icon: Twitter,
+    label: "Twitter / X",
+  },
+  youtube: {
+    href: "https://www.youtube.com/channel/UCddRc4mlget43r8rA8Ac13A",
+    Icon: YouTube,
+    label: "YouTube",
+  },
+};
+---
+
+<footer class="border-t border-gray-200">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 py-12">
+    <div class="flex flex-col gap-4">
+      <h4 class="label-sm">{t("Footer.navTitle")}</h4>
+      <nav class="flex flex-col gap-2">
+        {
+          links.map((link) => (
+            <a href={link.href} class="link text-sm">
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <h4 class="label-sm">{t("Footer.legalTitle")}</h4>
+      <nav class="flex flex-col gap-2">
+        <ManageCookiesIsland lang={lang} class="link text-sm" client:load />
+        {
+          legalLinks.map((link) => (
+            <a href={link.href} class="link text-sm">
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <h4 class="label-sm">{t("Footer.followUsTitle")}</h4>
+      <div class="flex flex-wrap gap-4">
+        {
+          Object.values(socialLinks).map(({ href, label, Icon }) => (
+            <a
+              href={href}
+              aria-label={label}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-blue-50 p-3 rounded-2xl text-blue-900 hover:bg-blue-900 hover:text-white shadow-sm transition-all duration-300"
+            >
+              <Icon class="w-5 h-5" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <p
+    class="border-t border-gray-200 text-xs text-gray-600 py-6 flex flex-col sm:flex-row sm:justify-between gap-2"
+  >
+    <span
+      >© {new Date().getFullYear()}
+      {t("Footer.TICP")}.
+      {t("Footer.allRightsReserved")}.</span
+    >
+    <span
+      >{t("Footer.developer")}: <a
+        href="https://amatria.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link">amatria.dev</a
+      >.</span
+    >
+  </p>
+</footer>

@@ -1,0 +1,128 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const fees = [
+  { elo: "1900 - 1999", fee: "90€" },
+  { elo: "1700 - 1899", fee: "150€" },
+  { elo: "1500 - 1699", fee: "200€" },
+  { elo: "< 1500", fee: "250€" },
+];
+---
+
+<section id="inscripciones" class="content-section">
+  <h2 class="section-heading">{t("RegistrationSection.title")}</h2>
+
+  <p>
+    {t("RegistrationSection.p1")}
+  </p>
+
+  <ul class="list-disc ml-12 space-y-2">
+    <li>
+      {t("RegistrationSection.liEmail")}
+      <a href="mailto:escola@xadrezpontevedra.com" class="inline-link"
+        >escola@xadrezpontevedra.com</a
+      >.
+    </li>
+    <li>{t("RegistrationSection.liPhone")}</li>
+  </ul>
+
+  <p>
+    {t("RegistrationSection.p2")}
+  </p>
+
+  <ul class="list-disc ml-12 space-y-2">
+    <li>{t("RegistrationSection.data1")}</li>
+    <li>{t("RegistrationSection.data2")}</li>
+    <li>{t("RegistrationSection.data3")}</li>
+    <li>{t("RegistrationSection.data4")}</li>
+    <li>{t("RegistrationSection.data5")}</li>
+  </ul>
+
+  <p>
+    {t("RegistrationSection.p3")}
+  </p>
+
+  <p>
+    {t("RegistrationSection.p4")}
+  </p>
+
+  <p>{t("RegistrationSection.bankTitle")}</p>
+
+  <ul class="list-disc ml-12 space-y-2">
+    <li>{t("RegistrationSection.bankName")}</li>
+    <li>{t("RegistrationSection.bankBeneficiary")}</li>
+    <li>{t("RegistrationSection.bankIban")}</li>
+  </ul>
+
+  <h3 class="section-subheading">{t("RegistrationSection.feesTitle")}</h3>
+
+  <ul class="list-disc ml-12 space-y-2">
+    <li>{t("RegistrationSection.fee1")}</li>
+    <li>{t("RegistrationSection.fee2")}</li>
+    <li>
+      {t("RegistrationSection.fee3")}
+    </li>
+  </ul>
+
+  <p>
+    {t("RegistrationSection.p5")}
+  </p>
+
+  <div class="card overflow-hidden">
+    <div class="grid grid-cols-2 table-header">
+      <span class="table-header-cell">{t("RegistrationSection.tableElo")}</span>
+      <span class="table-header-cell">{t("RegistrationSection.tableFee")}</span>
+    </div>
+    {
+      fees.map(({ elo, fee }) => (
+        <div class="grid grid-cols-2 px-6 py-3 hover:bg-blue-50 transition-colors duration-300 items-center">
+          <span class="table-cell">{elo}</span>
+          <span class="text-blue-900 font-bold text-sm">{fee}</span>
+        </div>
+      ))
+    }
+  </div>
+
+  <p>
+    {t("RegistrationSection.p6")}
+  </p>
+
+  <div class="card p-6 flex flex-col gap-2">
+    <span class="pill-blue mb-2">{t("RegistrationSection.earlyBirdTitle")}</span
+    >
+
+    <p>
+      {t("RegistrationSection.earlyBirdP1")}
+    </p>
+
+    <p>
+      {t("RegistrationSection.earlyBirdP2")}
+    </p>
+  </div>
+
+  <div class="card p-6 flex flex-col gap-2 border-l-4 border-amber-400">
+    <span class="pill-amber mb-2"
+      >{t("RegistrationSection.accreditationTitle")}</span
+    >
+
+    <p>
+      {t("RegistrationSection.accreditationP1")}
+    </p>
+
+    <p>
+      {t("RegistrationSection.accreditationP2")}
+    </p>
+
+    <p class="font-bold text-amber-800">
+      {t("RegistrationSection.accreditationP3")}
+    </p>
+  </div>
+</section>

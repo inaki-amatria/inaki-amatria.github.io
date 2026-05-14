@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+
+import Clock from "@assets/icons/Clock.svg";
+import Podium from "@assets/images/Podium.webp";
+
+import MapIsland from "@components/global/MapIsland.tsx";
+
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { getPath } from "@i18n/utils.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="flex flex-col gap-8 mb-12">
+  <h2 class="section-heading">{t("TournamentOverviewSection.title")}</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div
+      class="md:col-span-2 md:row-span-2 relative overflow-hidden card min-h-96"
+    >
+      <Image
+        src={Podium}
+        alt={t("TournamentOverviewSection.podiumAlt")}
+        class="absolute inset-0 w-full h-full object-cover"
+        quality="high"
+        loading="eager"
+      />
+
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-900/40 to-transparent"
+      >
+      </div>
+
+      <div class="relative flex flex-col justify-end h-full p-6 gap-4">
+        <h3 class="text-white text-3xl md:text-5xl font-bold font-serif italic">
+          {t("TournamentOverviewSection.prize")}
+        </h3>
+
+        <p class="text-blue-50 max-w-sm">
+          {t("TournamentOverviewSection.prizesDescription")}
+        </p>
+
+        <a href={getPath(lang, "premios")} class="button-primary w-fit">
+          {t("TournamentOverviewSection.viewPrizes")}
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="md:col-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-900 to-blue-950 p-6 flex flex-col gap-4 justify-center shadow-lg"
+    >
+      <div class="absolute right-[-5%] top-[-10%] opacity-10">
+        <Clock />
+      </div>
+
+      <span class="text-blue-50/80 font-bold uppercase tracking-widest text-xs">
+        {t("TournamentOverviewSection.timeControl")}
+      </span>
+
+      <h3 class="text-white text-3xl md:text-5xl font-bold font-serif italic">
+        {t("TournamentOverviewSection.timeValue")}
+      </h3>
+
+      <p class="text-blue-50/80">
+        {t("TournamentOverviewSection.timeDescription")}
+      </p>
+    </div>
+
+    <div class="card flex flex-col justify-center gap-4 p-6">
+      <span
+        class="text-3xl md:text-5xl font-bold font-serif italic text-blue-900"
+      >
+        9
+      </span>
+      <span class="label">{t("TournamentOverviewSection.rounds")}</span>
+
+      <p class="text-gray-600 text-sm">
+        {t("TournamentOverviewSection.roundsDescription")}
+      </p>
+    </div>
+
+    <MapIsland
+      lang={lang}
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11779.010525064095!2d-8.641!3d42.433!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2f71640de0accd%3A0xa46cae60fcd8407f!2sPabell%C3%B3n%20Universitario%20de%20Pontevedra!5e0!3m2!1ses!2ses!4v1771868138125!5m2!1ses!2ses"
+      class="relative min-h-48"
+      iframeClass="absolute inset-0 w-full h-full"
+      client:load
+    />
+  </div>
+</section>

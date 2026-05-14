@@ -1,0 +1,63 @@
+---
+import Layout from "@components/layouts/Layout.astro";
+
+import ByesSection from "@components/pages/bases/ByesSection.astro";
+import CompetitionSystemSection from "@components/pages/bases/CompetitionSystemSection.astro";
+import DataProtectionSection from "@components/pages/bases/DataProtectionSection.astro";
+import FinalProvisionsSection from "@components/pages/bases/FinalProvisionsSection.astro";
+import GeneralInformationSection from "@components/pages/bases/GeneralInformationSection.astro";
+import GroupsAndCategoriesSection from "@components/pages/bases/GroupsAndCategoriesSection.astro";
+import PlayingRegulationsSection from "@components/pages/bases/PlayingRegulationsSection.astro";
+import PontevedraSpecialRuleSection from "@components/pages/bases/PontevedraSpecialRuleSection.astro";
+import RegistrationSection from "@components/pages/bases/RegistrationSection.astro";
+import TableOfContentsSection from "@components/pages/bases/TableOfContentsSection.astro";
+import TieBreaksSection from "@components/pages/bases/TieBreaksSection.astro";
+import TimeControlSection from "@components/pages/bases/TimeControlSection.astro";
+import TitleSection from "@components/pages/bases/TitleSection.astro";
+import VenueSection from "@components/pages/bases/VenueSection.astro";
+
+import { type Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+import { staticLangPaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = staticLangPaths;
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslations(lang);
+
+const sections = [
+  { id: "informacion-general", title: t("bases.section.general") },
+  { id: "local-de-juego", title: t("bases.section.venue") },
+  { id: "sistema-de-competicion", title: t("bases.section.system") },
+  { id: "grupos-y-categorias", title: t("bases.section.groups") },
+  { id: "ritmo-de-juego", title: t("bases.section.time") },
+  { id: "byes", title: t("bases.section.byes") },
+  { id: "desempates", title: t("bases.section.tiebreaks") },
+  { id: "regla-especial-pontevedra", title: t("bases.section.specialRule") },
+  { id: "normativa-de-juego", title: t("bases.section.regulations") },
+  { id: "inscripciones", title: t("bases.section.registration") },
+  {
+    id: "proteccion-de-datos-y-derechos-de-imagen",
+    title: t("bases.section.data"),
+  },
+  { id: "disposiciones-finales", title: t("bases.section.final") },
+];
+---
+
+<Layout lang={lang} route={"bases"} title={t("bases.title")}>
+  <TitleSection lang={lang} />
+  <TableOfContentsSection lang={lang} sections={sections}>
+    <GeneralInformationSection lang={lang} />
+    <VenueSection lang={lang} />
+    <CompetitionSystemSection lang={lang} />
+    <GroupsAndCategoriesSection lang={lang} />
+    <TimeControlSection lang={lang} />
+    <ByesSection lang={lang} />
+    <TieBreaksSection lang={lang} />
+    <PontevedraSpecialRuleSection lang={lang} />
+    <PlayingRegulationsSection lang={lang} />
+    <RegistrationSection lang={lang} />
+    <DataProtectionSection lang={lang} />
+    <FinalProvisionsSection lang={lang} />
+  </TableOfContentsSection>
+</Layout>

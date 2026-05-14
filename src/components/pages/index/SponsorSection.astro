@@ -1,0 +1,116 @@
+---
+import ConcelloPontevedra from "@assets/logos/ConcelloPontevedra.svg";
+import DeporteGalego from "@assets/logos/DeporteGalego.svg";
+import DeportePontevedra from "@assets/logos/DeportePontevedra.svg";
+import DeputacionPontevedra from "@assets/logos/DeputacionPontevedra.svg";
+import FIDE from "@assets/logos/FIDE.svg";
+import LosSauces from "@assets/logos/LosSauces.svg";
+import UniversidadeVigo from "@assets/logos/UniversidadeVigo.svg";
+import VisitPontevedra from "@assets/logos/VisitPontevedra.svg";
+import ZonaInformatica from "@assets/logos/ZonaInformatica.svg";
+
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const primarySponsors = [
+  {
+    logo: ConcelloPontevedra,
+    name: "Concello de Pontevedra",
+    url: "https://pontevedra.gal",
+  },
+  {
+    logo: DeputacionPontevedra,
+    name: "Deputación de Pontevedra",
+    url: "https://www.depo.gal",
+  },
+  {
+    logo: UniversidadeVigo,
+    name: "Universidade de Vigo",
+    url: "https://www.uvigo.gal",
+    height: 10,
+  },
+];
+
+const secondarySponsors = [
+  {
+    logo: DeporteGalego,
+    name: "Deporte Galego",
+    url: "https://deporte.xunta.gal",
+    height: 10,
+  },
+  {
+    logo: DeportePontevedra,
+    name: "Deporte Pontevedra",
+    url: "https://deportes.pontevedra.gal",
+  },
+  {
+    logo: VisitPontevedra,
+    name: "Visit Pontevedra",
+    url: "https://www.visit-pontevedra.com",
+  },
+  {
+    logo: ZonaInformatica,
+    name: "Zona Informática",
+    url: "https://zonainformatica.es",
+  },
+  { logo: LosSauces, name: "Los Sauces", url: "https://colegiolossauces.com" },
+  { logo: FIDE, name: "FIDE", url: "https://www.fide.com" },
+];
+---
+
+<section class="flex flex-col gap-8 mb-12">
+  <div class="flex flex-col gap-4">
+    <h2 class="section-heading">{t("SponsorSection.title")}</h2>
+
+    <p class="text-gray-600">
+      {t("SponsorSection.p1")}
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+      {
+        primarySponsors.map(({ logo: Logo, name, url, height }) => (
+          <a
+            href={url}
+            aria-label={name}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card flex items-center justify-center p-6 md:col-span-2"
+          >
+            <Logo
+              aria-label={name}
+              class={`w-full text-blue-900 h-${height || 12}`}
+            />
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+      {
+        secondarySponsors.map(({ logo: Logo, name, url, height }) => (
+          <a
+            href={url}
+            aria-label={name}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card flex items-center justify-center p-6"
+          >
+            <Logo
+              aria-label={name}
+              class={`w-full text-blue-900 h-${height || 12}`}
+            />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

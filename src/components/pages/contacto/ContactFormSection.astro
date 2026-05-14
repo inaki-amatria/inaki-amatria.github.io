@@ -1,0 +1,68 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+import ContactFormIsland from "./ContactFormIsland.tsx";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="mb-12">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="flex flex-col gap-4">
+      <div class="card flex flex-col justify-center gap-4 p-6">
+        <span class="pill-blue w-fit">{t("ContactFormSection.callUs")}</span>
+        <h3 class="text-blue-900 text-3xl font-bold italic font-serif">
+          650 645 318
+        </h3>
+        <div class="space-y-1">
+          <p class="text-sm font-bold text-blue-900/80">
+            {t("ContactFormSection.immediateAttention")}
+          </p>
+          <p
+            class="text-xs text-blue-900/60 uppercase tracking-widest font-medium"
+          >
+            {t("ContactFormSection.hours")}
+          </p>
+        </div>
+      </div>
+
+      <div class="card flex flex-col justify-center gap-4 p-6">
+        <h3 class="text-3xl font-bold text-blue-900 font-serif italic">
+          {t("ContactFormSection.visitUs")}
+        </h3>
+
+        <p class="text-sm text-gray-600">
+          {t("ContactFormSection.visitUsP")}
+        </p>
+
+        <div class="space-y-1">
+          <p class="text-sm font-bold text-blue-900/80">
+            {t("ContactFormSection.address")}
+          </p>
+          <p
+            class="text-xs text-blue-900/60 uppercase tracking-widest font-medium"
+          >
+            {t("ContactFormSection.city")}
+          </p>
+        </div>
+
+        <a href="#encuentranos" class="button-primary w-fit mt-2"
+          >{t("ContactFormSection.viewMap")}</a
+        >
+      </div>
+    </div>
+
+    <div class="lg:col-span-2 card flex flex-col justify-center gap-4 p-6">
+      <h3 class="text-3xl font-bold text-blue-900">
+        {t("ContactFormSection.sendMessage")}
+      </h3>
+      <ContactFormIsland lang={lang} client:load />
+    </div>
+  </div>
+</section>

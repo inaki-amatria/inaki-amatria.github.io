@@ -1,0 +1,138 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const browsers = [
+  {
+    label: "Google Chrome",
+    href: "https://support.google.com/chrome/answer/95647",
+  },
+  {
+    label: "Microsoft Edge",
+    href: "https://support.microsoft.com/en-US/edge/manage-cookies-in-microsoft-edge-view-allow-block-delete-and-use",
+  },
+  {
+    label: "Mozilla Firefox",
+    href: "https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox",
+  },
+  {
+    label: "Safari",
+    href: "https://support.apple.com/en-gb/guide/safari/sfri11471/mac",
+  },
+];
+---
+
+<section class="content-section">
+  <h2 class="section-heading">{t("CookiePolicySection.title")}</h2>
+
+  <p>{t("CookiePolicySection.intro")}</p>
+
+  <h3 class="section-subheading">{t("CookiePolicySection.typesTitle")}</h3>
+
+  <p>{t("CookiePolicySection.typesP")}</p>
+
+  <div class="card overflow-hidden">
+    <div class="hidden md:grid grid-cols-4 table-header">
+      <span class="table-header-cell">{t("CookiePolicySection.tableType")}</span
+      >
+      <span class="table-header-cell">{t("CookiePolicySection.tableName")}</span
+      >
+      <span class="table-header-cell"
+        >{t("CookiePolicySection.tableDuration")}</span
+      >
+      <span class="table-header-cell"
+        >{t("CookiePolicySection.tablePurpose")}</span
+      >
+    </div>
+
+    {/* Cookie Propia */}
+    <div
+      class="flex flex-col md:grid md:grid-cols-4 px-6 py-4 gap-3 md:gap-0 hover:bg-blue-50 transition-colors duration-300 md:items-start bg-blue-50 md:bg-transparent"
+    >
+      <span class="pill-blue">{t("CookiePolicySection.own")}</span>
+      <div class="flex flex-col gap-0.5">
+        <span class="label md:hidden text-gray-400"
+          >{t("CookiePolicySection.tableName")}</span
+        >
+        <span class="table-cell font-mono">cookie_consent</span>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <span class="label md:hidden text-gray-400"
+          >{t("CookiePolicySection.tableDuration")}</span
+        >
+        <span class="table-cell"
+          >{t("CookiePolicySection.consentDuration")}</span
+        >
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <span class="label md:hidden text-gray-400"
+          >{t("CookiePolicySection.tablePurpose")}</span
+        >
+        <span class="table-cell">{t("CookiePolicySection.consentPurpose")}</span
+        >
+      </div>
+    </div>
+
+    {/* Cookie Terceros */}
+    <div
+      class="flex flex-col md:grid md:grid-cols-4 px-6 py-4 gap-3 md:gap-0 hover:bg-blue-50 transition-colors duration-300 md:items-start"
+    >
+      <span class="pill-gray">{t("CookiePolicySection.thirdParty")}</span>
+      <div class="flex flex-col gap-0.5">
+        <span class="label md:hidden text-gray-400"
+          >{t("CookiePolicySection.tableName")}</span
+        >
+        <span class="table-cell font-mono">Google Maps</span>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <span class="label md:hidden text-gray-400"
+          >{t("CookiePolicySection.tableDuration")}</span
+        >
+        <span class="table-cell">{t("CookiePolicySection.mapsDuration")}</span>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <span class="label md:hidden text-gray-400"
+          >{t("CookiePolicySection.tablePurpose")}</span
+        >
+        <span class="table-cell">
+          {t("CookiePolicySection.mapsPurpose")}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-link">{t("CookiePolicySection.googlePrivacy")}</a
+          >.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-subheading">{t("CookiePolicySection.managementTitle")}</h3>
+
+  <p>{t("CookiePolicySection.managementP")}</p>
+
+  <ul class="list-disc ml-12 space-y-2">
+    {
+      browsers.map(({ label, href }) =>
+        /* prettier-ignore */
+        <li>
+          <a href={href} target="_blank" rel="noopener noreferrer" class="inline-link">{label}</a>.
+        </li>,
+      )
+    }
+  </ul>
+
+  <p>
+    {t("CookiePolicySection.footerP")}
+    <a href="mailto:escola@xadrezpontevedra.com" class="inline-link"
+      >escola@xadrezpontevedra.com</a
+    >.
+  </p>
+</section>

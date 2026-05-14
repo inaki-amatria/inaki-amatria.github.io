@@ -1,0 +1,26 @@
+---
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="disposiciones-finales" class="content-section">
+  <h2 class="section-heading">{t("FinalProvisionsSection.title")}</h2>
+  <p>
+    {t("FinalProvisionsSection.p1")}
+  </p>
+
+  <p>
+    {t("FinalProvisionsSection.p2")}
+  </p>
+
+  <p>
+    {t("FinalProvisionsSection.p3")}
+  </p>
+</section>

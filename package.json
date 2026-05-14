@@ -1,0 +1,28 @@
+{
+  "name": "torneo-internacional-ciudad-de-pontevedra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@astrojs/preact": "^5.0.0",
+    "@astrojs/sitemap": "^3.7.2",
+    "@lichess-org/chessground": "^10.0.2",
+    "@lucide/astro": "^1.14.0",
+    "@tailwindcss/vite": "^4.2.0",
+    "astro": "^6.0.4",
+    "preact": "^10.28.4",
+    "tailwindcss": "^4.2.0"
+  },
+  "overrides": {
+    "vite": "^7"
+  }
+}

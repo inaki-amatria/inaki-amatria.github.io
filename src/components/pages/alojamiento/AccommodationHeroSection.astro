@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+
+import RiasBaixas from "@assets/images/RiasBaixas.webp";
+
+import type { Lang } from "@i18n/config.ts";
+import { useTranslations } from "@i18n/ui.ts";
+
+export interface Props {
+  lang: Lang;
+  class?: string;
+}
+
+const { lang, class: extraClass = "" } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class:list={["relative overflow-hidden card", extraClass]}>
+  <Image
+    src={RiasBaixas}
+    alt={t("AccommodationHeroSection.imageAlt")}
+    class="absolute inset-0 w-full h-full object-cover"
+    quality="high"
+    loading="eager"
+  />
+
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-900/40 to-transparent"
+  >
+  </div>
+
+  <div class="relative h-full flex flex-col justify-end p-6 gap-2">
+    <span class="text-xs font-bold uppercase tracking-widest text-blue-50">
+      {t("AccommodationHeroSection.eyebrow")}
+    </span>
+
+    <h1 class="text-white text-3xl font-bold font-serif italic leading-tight">
+      {t("AccommodationHeroSection.title")}
+    </h1>
+
+    <p class="text-blue-50 max-w-xs">
+      {t("AccommodationHeroSection.subtitle")}
+    </p>
+  </div>
+</div>
