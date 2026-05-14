@@ -1,4 +1,4 @@
-import {defaultLang, type Lang, languages} from './config.ts';
+import {type Lang, languages} from './config.ts';
 
 export function getPath(lang: Lang, path = ''): string {
   return `/${lang}${path ? `/${path}` : ''}`;
